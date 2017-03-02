@@ -12,10 +12,29 @@
     <script src="https://d3js.org/queue.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="Scripts/polyfills.js"></script>
     <script src="Scripts/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/menu_css.css" />
     <link href="Stylesheets/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <nav id="main_navigation">
+        <button class="cn-button" id="cn-button" onclick="handler();" onfocus="handler();">MENU</button>
+        <div class="cn-wrapper" id="cn-wrapper">
+            <ul id="cn-ul">
+                <li id="menu_item_1"><a href="#" onclick="updateData('obesity');"><img src="Logos/logo_obesity.svg" alt="obesity" height="40px" width="40px"/></a></li>
+                <li id="menu_item_2"><a href="#" onclick="updateData('vegetables');"><img src="Logos/logo_veggie_1.svg" alt="vegetables" height="40px" width="40px" /></a></li>
+                <li id="menu_item_3"><a href="#" onclick="updateData('butter');"><img src="Logos/logo_huile_beurre_acombiner2.svg" alt="butter" height="40px" width="40px" /></a></li>
+                <li id="menu_item_4"><a href="#" onclick="updateData('sport');"><img src="Logos/logo_sport.svg" alt="sport" height="40px" width="40px" /></a></li>
+                <li id="menu_item_5"><a href="#" onclick="updateData('fastfood');"><img src="Logos/logo_fastfood.svg" alt="fastfood" height="40px" width="40px" /></a></li>
+                <li id="menu_item_6"><a href="#" onclick="updateData('unknown');"><img src="Logos/unknown.svg" alt="unknown" height="40px" width="40px" /></a></li>
+                <li id="menu_item_7"><a href="#" onclick="updateData('unknown');"><img src="Logos/unknown.svg" alt="unknown" height="40px" width="40px" /></a></li>
+                <li id="menu_item_8"><a href="#" onclick="updateData('unknown');"><img src="Logos/unknown.svg" alt="unknown" height="40px" width="40px" /></a></li>
+            </ul>
+        </div>
+        <div id="cn-overlay" class="cn-overlay"></div>
+    </nav>
+
     <div id="map" class="container-fluid"></div>
 </body>
 </html>

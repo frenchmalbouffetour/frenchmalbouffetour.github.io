@@ -1,0 +1,233 @@
+* {
+	position: relative;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#main_navigation {
+    left: 0;
+    top: 0;
+    height: 0;
+}
+
+#cn-ul {
+    margin-bottom: 0px; 
+    margin-top: 5px;
+}
+
+#menuTooltip {
+    background: #e7ecf5;
+    border-radius: 3px;
+    font-size: 14pt;
+    color: #000000;
+}
+
+.cn-button {
+	top: 4.6em; /* For menu diameter */
+	left: 4.6em; /* For menu diameter */
+    position: relative;
+	z-index: 11;
+	margin-top: 0;
+	margin-left: 0;
+	padding-top: 0;
+	width: 5.5em;
+	height: 5.5em;
+	border: none;
+	border-radius: 50%;
+	background: none;
+	background-color: #e1e3e4;
+	color: #000000;
+	text-align: center;
+	font-weight: 700;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	cursor: pointer;
+	-webkit-backface-visibility: hidden;
+}
+
+.cn-wrapper {
+	top: -7.2em;
+    left: 1em;
+    position: relative;
+	z-index: 10;
+	margin-top: 0;
+	margin-left: 0;
+	width: 20em; /* For menu diameter */
+	height: 20em; /* For menu diameter */
+	border-radius: 50%;
+	background: transparent;
+	opacity: 0;
+	-webkit-transition: all .3s ease 0.3s;
+	-moz-transition: all .3s ease 0.3s;
+	transition: all .3s ease 0.3s;
+	-webkit-transform: scale(0.1);
+	-ms-transform: scale(0.1);
+	-moz-transform: scale(0.1);
+	transform: scale(0.1);
+	pointer-events: none;
+	overflow: hidden;
+}
+
+/*cover to prevent extra space of anchors from being clickable*/
+.cn-wrapper:after{
+  content:".";
+  display:block;
+  font-size:2em;
+  width:6.2em;
+  height:6.2em;
+  position: absolute;
+  left: 50%;
+  margin-left: -3.1em;
+  top:50%;
+  margin-top: -3.1em;
+  border-radius: 50%;
+  z-index:10;
+  color: transparent;
+}
+
+.opened-nav {
+	border-radius: 50%;
+	opacity: 1;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	transition: all .3s ease;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	pointer-events: auto;
+}
+
+.cn-wrapper li {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	margin-top: -3.55em; /**/
+	margin-left: -10em;
+	width: 10em;
+	height: 10em;
+	font-size: 1.5em;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	transition: all .3s ease;
+	-webkit-transform: rotate(69.5deg) skew(47deg);
+	-moz-transform: rotate(69.5deg) skew(47deg);
+	-ms-transform: rotate(69.5deg) skew(47deg);
+	transform: rotate(69.5deg) skew(47deg);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	pointer-events: none;
+}
+
+.cn-wrapper li a {
+	position: absolute;
+	right: -5.5em; /* For menu diameter */
+	bottom: -5.5em; /* For menu diameter */
+	display: block; 
+	width: 11em; /* For menu diameter */
+	height: 11em; /* For menu diameter */
+	border-radius: 50%;
+	background: #e1e3e4;
+	background: -webkit-radial-gradient(transparent 35%, #e1e3e4 35%);
+	background: -moz-radial-gradient(transparent 35%, #e1e3e4 35%);
+	background: radial-gradient(transparent 35%, #e1e3e4 35%);
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.2em;
+	line-height: 2;
+	-webkit-transform: skew(-47deg) rotate(-68.5deg) scale(1); /*Formula for rotation: -(90 -(central angle / 2))*/
+	-moz-transform: skew(-47deg) rotate(-68.5deg) scale(1);
+	-ms-transform: skew(-47deg) rotate(-68.5deg) scale(1);
+	transform: skew(-47deg) rotate(-68.5deg) scale(1);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	pointer-events: auto;
+}
+
+.cn-wrapper li a img {
+    margin-top: 0.7em;
+}
+
+.cn-button:hover {
+    background: #aaafb0;
+}
+
+.cn-wrapper li a:hover,
+.cn-wrapper li a:active,
+.cn-wrapper li a:focus {
+	background: -webkit-radial-gradient(transparent 35%, #aaafb0 35%);
+	background: -moz-radial-gradient(transparent 35%, #aaafb0 35%);
+	background: radial-gradient(transparent 35%, #aaafb0 35%);
+}
+
+.cn-wrapper li a:focus {
+    position: fixed; /* fix the displacement bug in webkit browsers when using tab key */
+}
+
+.opened-nav li {
+	-webkit-transition: all .3s ease .3s;
+	-moz-transition: all .3s ease .3s;
+	transition: all .3s ease .3s;
+}
+
+.opened-nav li:first-child {
+	-webkit-transform: rotate(0deg) skew(47deg); /*To create an angle of value equal to our desired central angle value, */
+	-moz-transform: rotate(0deg) skew(47deg);    /*we’ll have to skew the items.*/
+	-ms-transform: rotate(0deg) skew(47deg);     /*Formula: 90deg – x deg, where x is the value of the central angle we want.*/
+	transform: rotate(0deg) skew(47deg);         /*For the rotation, formula: (index of item * value of central angle) - 10*/
+}
+
+.opened-nav li:nth-child(2) {
+	-webkit-transform: rotate(45deg) skew(47deg);
+	-moz-transform: rotate(45deg) skew(47deg);
+	-ms-transform: rotate(45deg) skew(47deg);
+	transform: rotate(45deg) skew(47deg);
+}
+
+.opened-nav  li:nth-child(3) {
+	-webkit-transform: rotate(90deg) skew(47deg);
+	-moz-transform: rotate(90deg) skew(47deg);
+	-ms-transform: rotate(90deg) skew(47deg);
+	transform: rotate(90deg) skew(47deg);
+}
+
+.opened-nav li:nth-child(4) {
+	-webkit-transform: rotate(135deg) skew(47deg);
+	-moz-transform: rotate(135deg) skew(47deg);
+	-ms-transform: rotate(135deg) skew(47deg);
+	transform: rotate(135deg) skew(47deg);
+}
+
+.opened-nav li:nth-child(5) {
+	-webkit-transform: rotate(180deg) skew(47deg);
+	-moz-transform: rotate(180deg) skew(47deg);
+	-ms-transform: rotate(180deg) skew(47deg);
+	transform: rotate(180deg) skew(47deg);
+}
+
+.opened-nav li:nth-child(6) {
+	-webkit-transform: rotate(225deg) skew(47deg);
+	-moz-transform: rotate(225deg) skew(47deg);
+	-ms-transform: rotate(225deg) skew(47deg);
+	transform: rotate(225deg) skew(47deg);
+}
+
+.opened-nav li:nth-child(7) {
+	-webkit-transform: rotate(270deg) skew(47deg);
+	-moz-transform: rotate(270deg) skew(47deg);
+	-ms-transform: rotate(270deg) skew(47deg);
+	transform: rotate(270deg) skew(47deg);
+}
+
+.opened-nav li:nth-child(8) {
+	-webkit-transform: rotate(315deg) skew(47deg);
+	-moz-transform: rotate(315deg) skew(47deg);
+	-ms-transform: rotate(315deg) skew(47deg);
+	transform: rotate(315deg) skew(47deg);
+}

@@ -11,6 +11,76 @@
 
 ===================================================================+*/
 
+// Menu event handlers
+function handler() {
+    var wrapper = document.getElementById('cn-wrapper');
+
+    if (!open) {
+        this.innerHTML = "Close";
+        classie.add(wrapper, 'opened-nav');
+        $(".cn-button:hover").css("background", "#aaafb0")
+    }
+    else {
+        this.innerHTML = "Menu";
+        classie.remove(wrapper, 'opened-nav');
+        $(".cn-button:hover").css("background", "#e1e3e4")
+    }
+    open = !open;
+}
+
+function loadDataset(data) {
+    data.forEach(function (e, i) {
+        d3.select("#d" + e.CODE_DEPT)
+            .attr("class", function (d) { return "department q" + quantile(+e.POP) + "-9"; })
+            .on("mouseover", function (d) {
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                div.html("<b>Région : </b>" + e.NOM_REGION + "<br>"
+                        + "<b>Département : </b>" + e.NOM_DEPT + "<br>"
+                        + "<b>Population : </b>" + e.POP + "<br>")
+                    .style("left", (d3.event.pageX + 30) + "px")
+                    .style("top", (d3.event.pageY - 30) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                div.html("")
+                    .style("left", "0px")
+                    .style("top", "0px");
+            });
+    });
+}
+
+function updateData(plotName) {
+    switch (plotName) {
+        case "obesity":
+            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "Purples");
+            break;
+        case "vegetables":
+            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "Greens");
+            break;
+        case "butter":
+            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "YlGn");
+            break;
+        case "sport":
+            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "RdBu");
+            break;
+        case "fastfood":
+            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "YlOrBr");
+            break;
+        default:
+            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "Greys");
+    }
+}
+
 function main() {
     var width = $(window).width();
     var height = $(window).height();
@@ -51,14 +121,12 @@ function main() {
     // Use a queue to asynchronously load json files
     queue()
         .defer(d3.json, "Json/departements.geojson")
-        .defer(d3.json, "Json/regions.geojson")
-        .defer(d3.csv, "Json/population_new_regions.csv")
+        .defer(d3.json, "Json/regions_before_2015.geojson")
+        .defer(d3.csv, "Json/population.csv")
         .await(ready);
 
     function ready(error, departements, regions, population) {
         // Add departments
-        console.log(departements);
-        console.log(error);
         deps.selectAll("path")
 			.data(departements.features)
 			.enter()
@@ -149,6 +217,76 @@ function main() {
         d3.selectAll("path").attr('d', path);
     }
     d3.select(window).on('resize', resize);
+
+    // Menu tooltip
+    var menuDiv = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .attr("id", "menuTooltip")
+        .style("opacity", 0);
+
+    $("#menu_item_1").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Au Nord, il va falloir faire un régime !").style("left", $("#menu_item_1 a img").position().left + "px").style("top", $("#menu_item_1 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_2").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Amis du Nord-Est, avez-vous oublié ce qu'était une courgette ?").style("left", $("#menu_item_2 a img").position().left + "px").style("top", $("#menu_item_2 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_3").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Beurre VS Huile : un combat Nord-Sud").style("left", $("#menu_item_3 a img").position().left + "px").style("top", $("#menu_item_3 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_4").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Les plus sportifs sont au pays du surf et du rugby (au Sud-Ouest quoi…)").style("left", $("#menu_item_4 a img").position().left + "px").style("top", $("#menu_item_4 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_5").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Les Parisiens ne cuisinent plus !").style("left", $("#menu_item_5 a img").position().left + "px").style("top", $("#menu_item_5 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_6").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Mais que fait Romane? le graphe n'existe pas!!!").style("left", $("#menu_item_6 a img").position().left + "px").style("top", $("#menu_item_6 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_7").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Mais que fait Romane? le graphe n'existe pas!!!").style("left", $("#menu_item_7 a img").position().left + "px").style("top", $("#menu_item_7 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    $("#menu_item_8").on("mouseover", function (d) {
+        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.html("Mais que fait Romane? le graphe n'existe pas!!!").style("left", $("#menu_item_8 a img").position().left + "px").style("top", $("#menu_item_8 a img").position().top + "px");
+    }).on("mouseout", function (d) {
+        menuDiv.transition().duration(500).style("opacity", 0);
+        menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
 }
 
 $(window).bind("load", main);
