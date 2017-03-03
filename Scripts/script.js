@@ -30,15 +30,14 @@ function handler() {
 
 function loadDataset(data) {
     data.forEach(function (e, i) {
-        d3.select("#d" + e.CODE_DEPT)
-            .attr("class", function (d) { return "department q" + quantile(+e.POP) + "-9"; })
+        d3.select("#r" + e.CODE_REG)
+            .attr("class", function (d) { return "region q" + quantile(+e.POP) + "-9"; })
             .on("mouseover", function (d) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
                 div.html("<b>Région : </b>" + e.NOM_REGION + "<br>"
-                        + "<b>Département : </b>" + e.NOM_DEPT + "<br>"
-                        + "<b>Population : </b>" + e.POP + "<br>")
+                        + "<b>Population : </b> cste<br>")
                     .style("left", (d3.event.pageX + 30) + "px")
                     .style("top", (d3.event.pageY - 30) + "px");
             })
@@ -56,27 +55,27 @@ function loadDataset(data) {
 function updateData(plotName) {
     switch (plotName) {
         case "obesity":
-            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Purples");
             break;
         case "vegetables":
-            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Greens");
             break;
         case "butter":
-            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "YlGn");
             break;
         case "sport":
-            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
-            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "YlOrBr");
             break;
         default:
-            d3.csv("Json/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Greys");
     }
 }
@@ -122,20 +121,10 @@ function main() {
     queue()
         .defer(d3.json, "Json/departements.geojson")
         .defer(d3.json, "Json/regions_before_2015.geojson")
-        .defer(d3.csv, "Json/population.csv")
+        .defer(d3.csv, "Data/population.csv")
         .await(ready);
 
     function ready(error, departements, regions, population) {
-        // Add departments
-        deps.selectAll("path")
-			.data(departements.features)
-			.enter()
-			.append("path")
-			.attr('id', function (data) {
-			    return "d" + data.properties.code;
-			})
-			.attr("d", path);
-
         // Add regions
         deps.selectAll("g")
             .data(regions.features)
@@ -144,8 +133,18 @@ function main() {
 			.attr('id', function (data) {
 			    return "r" + data.properties.code;
 			})
+			.attr("d", path);
+
+        // Add departments
+        deps.selectAll("path")
+			.data(departements.features)
+			.enter()
+			.append("path")
+			.attr('id', function (data) {
+			    return "d" + data.properties.code;
+			})
 			.attr("d", path)
-            .attr("class", "region");
+            .attr("class", "department");
 
         // Quantile scales map an input domain to a discrete range, 0...max(population) to 1...9
         var quantile = d3.scaleQuantile()
@@ -175,15 +174,14 @@ function main() {
             .call(d3.axisRight(legendScale).ticks(6));*/
 
         population.forEach(function (e, i) {
-            d3.select("#d" + e.CODE_DEPT)
-                .attr("class", function (d) { return "department q" + quantile(+e.POP) + "-9"; })
+            d3.select("#r" + e.CODE_REG)
+                .attr("class", function (d) { return "region q" + quantile(+e.POP) + "-9"; })
                 .on("mouseover", function (d) {
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
                     div.html("<b>Région : </b>" + e.NOM_REGION + "<br>"
-                            + "<b>Département : </b>" + e.NOM_DEPT + "<br>"
-                            + "<b>Population : </b>" + e.POP + "<br>")
+                            + "<b>Population : </b> cste<br>")
                         .style("left", (d3.event.pageX + 30) + "px")
                         .style("top", (d3.event.pageY - 30) + "px");
                 })

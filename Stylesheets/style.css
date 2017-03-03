@@ -20,6 +20,7 @@ div.tooltip {
 }
 
 .department {
+    fill: none;
     cursor: pointer;
     stroke: #fff;
     stroke-width: 1.0px;
@@ -27,7 +28,6 @@ div.tooltip {
 }
 
 .region {
-    fill: none;
     stroke: #fff;
     stroke-width: 2.0px;
 }
