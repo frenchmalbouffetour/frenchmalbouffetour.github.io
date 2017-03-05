@@ -74,6 +74,10 @@ function updateData(plotName) {
             d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "YlOrBr");
             break;
+		case "alcool":
+            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            $("#map svg").attr("class", "YlOrBr");
+            break;
         default:
             d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Greys");
@@ -224,7 +228,7 @@ function main() {
 
     $("#menu_item_1").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Au Nord, il va falloir faire un régime !").style("left", $("#menu_item_1 a img").position().left + "px").style("top", $("#menu_item_1 a img").position().top + "px");
+        menuDiv.html("Les obèses").style("left", $("#menu_item_1 a img").position().left + "px").style("top", $("#menu_item_1 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
@@ -232,7 +236,7 @@ function main() {
 
     $("#menu_item_2").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Amis du Nord-Est, avez-vous oublié ce qu'était une courgette ?").style("left", $("#menu_item_2 a img").position().left + "px").style("top", $("#menu_item_2 a img").position().top + "px");
+        menuDiv.html("Les veggies").style("left", $("#menu_item_2 a img").position().left + "px").style("top", $("#menu_item_2 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
@@ -240,7 +244,7 @@ function main() {
 
     $("#menu_item_3").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Beurre VS Huile : un combat Nord-Sud").style("left", $("#menu_item_3 a img").position().left + "px").style("top", $("#menu_item_3 a img").position().top + "px");
+        menuDiv.html("Les plutôt-beurre et les plutôt-huile").style("left", $("#menu_item_3 a img").position().left + "px").style("top", $("#menu_item_3 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
@@ -248,7 +252,7 @@ function main() {
 
     $("#menu_item_4").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Les plus sportifs sont au pays du surf et du rugby (au Sud-Ouest quoi…)").style("left", $("#menu_item_4 a img").position().left + "px").style("top", $("#menu_item_4 a img").position().top + "px");
+        menuDiv.html("Les sportifs").style("left", $("#menu_item_4 a img").position().left + "px").style("top", $("#menu_item_4 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
@@ -256,7 +260,7 @@ function main() {
 
     $("#menu_item_5").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Les Parisiens ne cuisinent plus !").style("left", $("#menu_item_5 a img").position().left + "px").style("top", $("#menu_item_5 a img").position().top + "px");
+        menuDiv.html("Les adeptes du fastfood").style("left", $("#menu_item_5 a img").position().left + "px").style("top", $("#menu_item_5 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
@@ -264,7 +268,7 @@ function main() {
 
     $("#menu_item_6").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Mais que fait Romane? le graphe n'existe pas!!!").style("left", $("#menu_item_6 a img").position().left + "px").style("top", $("#menu_item_6 a img").position().top + "px");
+        menuDiv.html("Les alcolos").style("left", $("#menu_item_6 a img").position().left + "px").style("top", $("#menu_item_6 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
