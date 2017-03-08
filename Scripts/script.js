@@ -30,24 +30,30 @@ function handler() {
 
 function loadDataset(data) {
     data.forEach(function (e, i) {
-        d3.select("#r" + e.CODE_REG)
-            .attr("class", function (d) { return "region q" + quantile(+e.POP) + "-9"; })
+        d3.select("#r" + e.reg_code)
+            .attr("class", function (d) { return "region q" + quantile(+e.value) + "-9"; })
             .on("mouseover", function (d) {
-                div.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                div.html("<b>Région : </b>" + e.NOM_REGION + "<br>"
-                        + "<b>Population : </b> cste<br>")
-                    .style("left", (d3.event.pageX + 30) + "px")
-                    .style("top", (d3.event.pageY - 30) + "px");
+					d3.select(this).transition().duration(300).style("opacity", 0.6);
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div.html("<b>" + e.reg_name + "</b> <br>"
+                            + Math.round(e.value) +" g/jour <br>" 
+							+ "<b>Classement : </b>"+ e.rank +"<br>"
+							+ (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
+                        .style("left", (d3.event.pageX + 30) + "px")
+                        .style("top", (d3.event.pageY - 30) + "px");
             })
             .on("mouseout", function (d) {
-                div.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-                div.html("")
-                    .style("left", "0px")
-                    .style("top", "0px");
+					d3.select(this)
+					.transition().duration(300)
+					.style("opacity", 1);
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    div.html("")
+                        .style("left", "0px")
+                        .style("top", "0px");
             });
     });
 }
@@ -55,31 +61,31 @@ function loadDataset(data) {
 function updateData(plotName) {
     switch (plotName) {
         case "obesity":
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Purples");
             break;
         case "vegetables":
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Greens");
             break;
         case "butter":
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "YlGn");
             break;
         case "sport":
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "YlOrBr");
             break;
 		case "alcool":
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "YlOrBr");
             break;
         default:
-            d3.csv("Data/population.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
             $("#map svg").attr("class", "Greys");
     }
 }
@@ -123,12 +129,12 @@ function main() {
 
     // Use a queue to asynchronously load json files
     queue()
-        .defer(d3.json, "Json/departements.geojson")
+        //.defer(d3.json, "Json/departements.geojson")
         .defer(d3.json, "Json/regions_before_2015.geojson")
-        .defer(d3.csv, "Data/population.csv")
+        .defer(d3.csv, "Data/fruits_legumes_resultats.csv")
         .await(ready);
 
-    function ready(error, departements, regions, population) {
+    function ready(error, regions, population) {
         // Add regions
         deps.selectAll("g")
             .data(regions.features)
@@ -140,7 +146,7 @@ function main() {
 			.attr("d", path);
 
         // Add departments
-        deps.selectAll("path")
+        /*deps.selectAll("path")
 			.data(departements.features)
 			.enter()
 			.append("path")
@@ -148,11 +154,11 @@ function main() {
 			    return "d" + data.properties.code;
 			})
 			.attr("d", path)
-            .attr("class", "department");
+            .attr("class", "department");*/
 
         // Quantile scales map an input domain to a discrete range, 0...max(population) to 1...9
         var quantile = d3.scaleQuantile()
-            .domain([0, d3.max(population, function (e) { return +e.POP; })])
+            .domain([0, d3.max(population, function (e) { return +e.value; })])
             .range(d3.range(9));
 
         // Legend
@@ -178,18 +184,24 @@ function main() {
             .call(d3.axisRight(legendScale).ticks(6));*/
 
         population.forEach(function (e, i) {
-            d3.select("#r" + e.CODE_REG)
-                .attr("class", function (d) { return "region q" + quantile(+e.POP) + "-9"; })
+            d3.select("#r" + e.reg_code)
+                .attr("class", function (d) { return "region q" + quantile(+e.value) + "-9"; })
                 .on("mouseover", function (d) {
+					d3.select(this).transition().duration(300).style("opacity", 0.6);
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    div.html("<b>Région : </b>" + e.NOM_REGION + "<br>"
-                            + "<b>Population : </b> cste<br>")
+                    div.html("<b>" + e.reg_name + "</b> <br>"
+                            + Math.round(e.value) +" g/jour <br>" 
+							+ "<b>Classement : </b>"+ e.rank +"<br>"
+							+ (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
                         .style("left", (d3.event.pageX + 30) + "px")
                         .style("top", (d3.event.pageY - 30) + "px");
                 })
                 .on("mouseout", function (d) {
+					d3.select(this)
+					.transition().duration(300)
+					.style("opacity", 1);
                     div.transition()
                         .duration(500)
                         .style("opacity", 0);

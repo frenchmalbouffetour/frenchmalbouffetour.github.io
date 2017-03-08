@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+.redText{
+	color: red;
+}
+
+
 div.tooltip {
     position: absolute;
     text-align: center;
@@ -13,7 +18,7 @@ div.tooltip {
     width: 275px;
     padding: 2px;
     font: Arial 12px sans-serif;
-    background: grey;
+    background: white;
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
@@ -26,6 +31,7 @@ div.tooltip {
     stroke-width: 1.0px;
     stroke-dasharray: 5;
 }
+
 
 .region {
     stroke: #fff;
