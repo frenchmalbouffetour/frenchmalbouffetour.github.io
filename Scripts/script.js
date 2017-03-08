@@ -28,11 +28,19 @@ function handler() {
     open = !open;
 }
 
+
 function loadDataset(data) {
+	
+	// the shit is here
+		var quantile = d3.scaleQuantile()
+            .domain([d3.min(data, function (e) { return +e.value; }), d3.max(data, function (e) { return +e.value; })])
+            .range(d3.range(9));
+		// the shit ends here
+	
     data.forEach(function (e, i) {
-        d3.select("#r" + e.reg_code)
-            .attr("class", function (d) { return "region q" + quantile(+e.value) + "-9"; })
-            .on("mouseover", function (d) {
+            d3.select("#r" + e.reg_code)
+                .attr("class", function (d) { return "region q" + quantile(+e.value) + "-9"; })
+                .on("mouseover", function (d) {
 					d3.select(this).transition().duration(300).style("opacity", 0.4);
                     div.transition()
                         .duration(200)
@@ -43,8 +51,8 @@ function loadDataset(data) {
 							+ (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
                         .style("left", (d3.event.pageX + 30) + "px")
                         .style("top", (d3.event.pageY - 30) + "px");
-            })
-            .on("mouseout", function (d) {
+                })
+                .on("mouseout", function (d) {
 					d3.select(this)
 					.transition().duration(300)
 					.style("opacity", 1);
@@ -54,8 +62,8 @@ function loadDataset(data) {
                     div.html("")
                         .style("left", "0px")
                         .style("top", "0px");
-            });
-    });
+                });
+        });
 }
 
 function updateData(plotName) {
@@ -89,6 +97,7 @@ function updateData(plotName) {
             $("#map svg").attr("class", "Greys");
     }
 }
+var div = null;
 
 function main() {
     var width = $(window).width();
@@ -120,7 +129,7 @@ function main() {
 		.attr("height", height)
 		.attr("class", "Blues");
 
-    var div = d3.select("body").append("div")
+    div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
 
@@ -157,7 +166,7 @@ function main() {
             .attr("class", "department");*/
 
         // Quantile scales map an input domain to a discrete range, 0...max(population) to 1...9
-        var quantile = d3.scaleQuantile()
+		var quantile = d3.scaleQuantile()
             .domain([d3.min(population, function (e) { return +e.value; }), d3.max(population, function (e) { return +e.value; })])
             .range(d3.range(9));
 
