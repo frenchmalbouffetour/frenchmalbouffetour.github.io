@@ -33,7 +33,7 @@ function loadDataset(data) {
         d3.select("#r" + e.reg_code)
             .attr("class", function (d) { return "region q" + quantile(+e.value) + "-9"; })
             .on("mouseover", function (d) {
-					d3.select(this).transition().duration(300).style("opacity", 0.6);
+					d3.select(this).transition().duration(300).style("opacity", 0.4);
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
@@ -66,7 +66,7 @@ function updateData(plotName) {
             break;
         case "vegetables":
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
-            $("#map svg").attr("class", "Greens");
+            $("#map svg").attr("class", "RdYlGn");
             break;
         case "butter":
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
@@ -78,7 +78,7 @@ function updateData(plotName) {
             break;
         case "fastfood":
             d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data); });
-            $("#map svg").attr("class", "YlOrBr");
+            $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcool":
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
@@ -158,7 +158,7 @@ function main() {
 
         // Quantile scales map an input domain to a discrete range, 0...max(population) to 1...9
         var quantile = d3.scaleQuantile()
-            .domain([0, d3.max(population, function (e) { return +e.value; })])
+            .domain([d3.min(population, function (e) { return +e.value; }), d3.max(population, function (e) { return +e.value; })])
             .range(d3.range(9));
 
         // Legend
@@ -187,7 +187,7 @@ function main() {
             d3.select("#r" + e.reg_code)
                 .attr("class", function (d) { return "region q" + quantile(+e.value) + "-9"; })
                 .on("mouseover", function (d) {
-					d3.select(this).transition().duration(300).style("opacity", 0.6);
+					d3.select(this).transition().duration(300).style("opacity", 0.4);
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
