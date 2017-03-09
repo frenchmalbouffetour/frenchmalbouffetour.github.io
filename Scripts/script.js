@@ -29,7 +29,7 @@ function handler() {
 }
 
 
-function loadDataset(data) {
+function loadDataset(data, tooltip_type) {
 	
 	// the shit is here
 		var quantile = d3.scaleQuantile()
@@ -45,12 +45,31 @@ function loadDataset(data) {
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    div.html("<b>" + e.reg_name + "</b> <br>"
-                            + Math.round(e.value) +" g/jour <br>" 
-							+ "<b>Classement : </b>"+ e.rank +"<br>"
-							+ (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
-                        .style("left", (d3.event.pageX + 30) + "px")
-                        .style("top", (d3.event.pageY - 30) + "px");
+					switch (tooltip_type) { 
+					    case "sport":
+						    div.html("<b>" + e.reg_name + "</b> <br>"
+							        + Math.round(e.value) +" minutes/semaine <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
+						        .style("left", (d3.event.pageX + 30) + "px")
+								.style("top", (d3.event.pageY - 30) + "px");						
+						    break;
+						case "fastfood":
+						    div.html("<b>" + e.reg_name + "</b> <br>"
+							        + Math.round(e.value) +" % mangent plus d'1 fois/mois dans un fastfood <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" points par rapport à la moyenne française <br>")
+						        .style("left", (d3.event.pageX + 30) + "px")
+								.style("top", (d3.event.pageY - 30) + "px");						
+						    break
+						default:
+						    div.html("<b>" + e.reg_name + "</b> <br>"
+							        + Math.round(e.value) +" g/jour <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
+						        .style("left", (d3.event.pageX + 30) + "px")
+								.style("top", (d3.event.pageY - 30) + "px");
+					}
                 })
                 .on("mouseout", function (d) {
 					d3.select(this)
@@ -81,11 +100,11 @@ function updateData(plotName) {
             $("#map svg").attr("class", "YlGn");
             break;
         case "sport":
-            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport"); });
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
-            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood"); });
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcool":
