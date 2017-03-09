@@ -29,13 +29,44 @@ function handler() {
 }
 
 
-function loadDataset(data, tooltip_type) {
-	
-	// the shit is here
+function loadDataset(data, battle, tooltip_type) {
+	if (battle == "yes"){
+    data.forEach(function (e, i) {
+            d3.select("#r" + e.reg_code)
+                .attr("class", function (d) { 
+				    if (e.battle_result == "Beurre") { 
+					return "region q" + "1-9";
+					} else { 
+					return "region q" + "5-9";
+					}
+				})
+                .on("mouseover", function (d) {
+					d3.select(this).transition().duration(300).style("opacity", 0.4);
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+				    div.html("<b>" + e.reg_name + "</b> <br>"
+							+ e.battle_result +"<br>")
+						.style("left", (d3.event.pageX + 30) + "px")
+					    .style("top", (d3.event.pageY - 30) + "px");
+                })
+                .on("mouseout", function (d) {
+					d3.select(this)
+					.transition().duration(300)
+					.style("opacity", 1);
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    div.html("")
+                        .style("left", "0px")
+                        .style("top", "0px");
+                });
+        });				
+	} else {
+	// Define the variable called quantile
 		var quantile = d3.scaleQuantile()
             .domain([d3.min(data, function (e) { return +e.value; }), d3.max(data, function (e) { return +e.value; })])
             .range(d3.range(9));
-		// the shit ends here
 	
     data.forEach(function (e, i) {
             d3.select("#r" + e.reg_code)
@@ -82,37 +113,39 @@ function loadDataset(data, tooltip_type) {
                         .style("left", "0px")
                         .style("top", "0px");
                 });
-        });
+        });		
+	}
+
 }
 
 function updateData(plotName) {
     switch (plotName) {
         case "obesity":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
             $("#map svg").attr("class", "Purples");
             break;
         case "vegetables":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
             $("#map svg").attr("class", "RdYlGn");
             break;
         case "butter":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "yes"); });
             $("#map svg").attr("class", "YlGn");
             break;
         case "sport":
-            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport"); });
+            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "no", "sport"); });
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
-            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood"); });
+            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "no", "fastfood"); });
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcool":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
             $("#map svg").attr("class", "YlOrBr");
             break;
         default:
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
             $("#map svg").attr("class", "Greys");
     }
 }
