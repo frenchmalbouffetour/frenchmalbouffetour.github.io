@@ -46,7 +46,12 @@ function loadDataset(data, battle, tooltip_type) {
                         .duration(200)
                         .style("opacity", .9);
 				    div.html("<b>" + e.reg_name + "</b> <br>"
-							+ e.battle_result +"<br>")
+							+ "<b> <u>" + e.battle_result + " </u> </b> <br>"
+							+ Math.round(e.value_beurre) +" g/jour de beurre <br>"
+							+ Math.round(e.value_huile) +" g/jour d'huile <br>"
+							+ "<b> Par rapport à la moyenne française : </b> <br>"
+							+ (Math.round(e.delta_beurre)<0?'':'+') + Math.round(e.delta_beurre) +" % de beurre <br>"
+							+ (Math.round(e.delta_huile)<0?'':'+') + Math.round(e.delta_huile) +" % d'huile <br>")
 						.style("left", (d3.event.pageX + 30) + "px")
 					    .style("top", (d3.event.pageY - 30) + "px");
                 })
@@ -143,6 +148,10 @@ function updateData(plotName) {
 		case "alcool":
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
             $("#map svg").attr("class", "YlOrBr");
+            break;
+		case "coffee":
+            d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "no"); });
+            $("#map svg").attr("class", "GnYlRd");
             break;
         default:
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
@@ -349,7 +358,7 @@ function main() {
 
     $("#menu_item_7").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Mais que fait Romane? le graphe n'existe pas!!!").style("left", $("#menu_item_7 a img").position().left + "px").style("top", $("#menu_item_7 a img").position().top + "px");
+        menuDiv.html("Les caféinomanes").style("left", $("#menu_item_7 a img").position().left + "px").style("top", $("#menu_item_7 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
