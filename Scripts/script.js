@@ -83,26 +83,70 @@ function loadDataset(data, battle, tooltip_type) {
                         .style("opacity", .9);
 					switch (tooltip_type) { 
 					    case "sport":
-						    div.html("<b>" + e.reg_name + "</b> <br>"
-							        + Math.round(e.value) +" minutes/semaine <br>" 
+                            div.html(function (d) {
+						        if (Math.round(e.delta)>=0) {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" minutes/semaine <br>" 
 							        + "<b>Classement : </b>"+ e.rank +"<br>"
-							        + (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
+							        + "<b><font color='#4AA02C'> +" + Math.round(e.delta) +" % </font></b> par rapport à la moyenne française <br>";
+						        } else {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" minutes/semaine <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + "<b><font color=#E41B17>" + Math.round(e.delta) +" % </font></b>par rapport à la moyenne française <br>";
+						        }
+					        })						
 						        .style("left", (d3.event.pageX + 30) + "px")
 								.style("top", (d3.event.pageY - 30) + "px");						
 						    break;
 						case "fastfood":
-						    div.html("<b>" + e.reg_name + "</b> <br>"
-							        + Math.round(e.value) +" % mangent plus d'1 fois/mois dans un fastfood <br>" 
+                            div.html(function (d) {
+						        if (Math.round(e.delta)>=0) {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" % mangent plus d'1 fois/mois dans un fastfood <br>" 
 							        + "<b>Classement : </b>"+ e.rank +"<br>"
-							        + (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" points par rapport à la moyenne française <br>")
+							        + "<b><font color='#E41B17'> +" + Math.round(e.delta) +" % </font></b> par rapport à la moyenne française <br>";
+						        } else {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" % mangent plus d'1 fois/mois dans un fastfood <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + "<b><font color=#4AA02C>" + Math.round(e.delta) +" % </font></b>par rapport à la moyenne française <br>";
+						        }
+					        })			
+						        .style("left", (d3.event.pageX + 30) + "px")
+								.style("top", (d3.event.pageY - 30) + "px");						
+						    break
+						case "inverse_default":
+                            div.html(function (d) {
+						        if (Math.round(e.delta)>=0) {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" g/jour <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + "<b><font color='#E41B17'> +" + Math.round(e.delta) +" % </font></b> par rapport à la moyenne française <br>";
+						        } else {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" g/jour <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + "<b><font color=#4AA02C>" + Math.round(e.delta) +" % </font></b>par rapport à la moyenne française <br>";
+						        }
+					        })			
 						        .style("left", (d3.event.pageX + 30) + "px")
 								.style("top", (d3.event.pageY - 30) + "px");						
 						    break
 						default:
-						    div.html("<b>" + e.reg_name + "</b> <br>"
-							        + Math.round(e.value) +" g/jour <br>" 
+                            div.html(function (d) {
+						        if (Math.round(e.delta)>=0) {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" g/jour <br>" 
 							        + "<b>Classement : </b>"+ e.rank +"<br>"
-							        + (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
+							        + "<b><font color='#4AA02C'> +" + Math.round(e.delta) +" % </font></b> par rapport à la moyenne française <br>";
+						        } else {
+							        return "<b>" + e.reg_name + "</b> <br>"
+                                    + Math.round(e.value) +" g/jour <br>" 
+							        + "<b>Classement : </b>"+ e.rank +"<br>"
+							        + "<b><font color=#E41B17>" + Math.round(e.delta) +" % </font></b>par rapport à la moyenne française <br>";
+						        }
+					        })				
 						        .style("left", (d3.event.pageX + 30) + "px")
 								.style("top", (d3.event.pageY - 30) + "px");
 					}
@@ -146,11 +190,11 @@ function updateData(plotName) {
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcool":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no"); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "no", "inverse_default"); });
             $("#map svg").attr("class", "YlOrBr");
             break;
 		case "coffee":
-            d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "no"); });
+            d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "no", "inverse_default"); });
             $("#map svg").attr("class", "GnYlRd");
             break;
         default:
@@ -261,10 +305,19 @@ function main() {
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    div.html("<b>" + e.reg_name + "</b> <br>"
+                    div.html(function (d) {
+						if (Math.round(e.delta)>=0) {
+							return "<b>" + e.reg_name + "</b> <br>"
                             + Math.round(e.value) +" g/jour <br>" 
 							+ "<b>Classement : </b>"+ e.rank +"<br>"
-							+ (Math.round(e.delta)<0?'':'+') + Math.round(e.delta) +" % par rapport à la moyenne française <br>")
+							+ "<b><font color='#4AA02C'> +" + Math.round(e.delta) +" % </font></b> par rapport à la moyenne française <br>";
+						} else {
+							return "<b>" + e.reg_name + "</b> <br>"
+                            + Math.round(e.value) +" g/jour <br>" 
+							+ "<b>Classement : </b>"+ e.rank +"<br>"
+							+ "<b><font color=#E41B17>" + Math.round(e.delta) +" % </font></b>par rapport à la moyenne française <br>";
+						}
+					})
                         .style("left", (d3.event.pageX + 30) + "px")
                         .style("top", (d3.event.pageY - 30) + "px");
                 })
