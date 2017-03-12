@@ -6,10 +6,21 @@
     padding: 0;
 }
 
-.redText{
-	color: red;
+.greenIndicator {
+    color: #4AA02C;
 }
 
+.redIndicator {
+    color: #E41B17;
+}
+
+.boldText {
+    font-weight: bold;
+}
+
+#map_tooltip p {
+    margin: 0;
+}
 
 div.tooltip {
     position: absolute;
@@ -22,20 +33,27 @@ div.tooltip {
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
+    opacity: 0;
 }
-
-.department {
-    fill: none;
-    cursor: pointer;
-    stroke: #fff;
-    stroke-width: 1.0px;
-    stroke-dasharray: 5;
-}
-
 
 .region {
     stroke: #fff;
     stroke-width: 2.0px;
+}
+
+#main_title_placeholder, #subtitle_placeholder {
+    text-align: center;
+    color: black;
+    z-index: 1000;
+}
+
+#main_title_placeholder {
+    font: Arial 26pt sans-serif;
+    font-weight: bold;
+}
+
+#subtitle_placeholder {
+    font: Arial 16pt sans-serif;
 }
 
 .Blues .q0-9 { fill:rgb(247,251,255) } 
@@ -89,7 +107,6 @@ div.tooltip {
 .YlOrBr .q8-9{fill:rgb(102,37,6)}
 
 .YlGn .q0-9{fill:rgb(255,255,229)} 
-/*.YlGn .q1-9{fill:rgb(247,252,185)}*/
 .YlGn .q1-9{fill:rgb(255,219,76)}
 .YlGn .q2-9{fill:rgb(217,240,163)} 
 .YlGn .q3-9{fill:rgb(173,221,142)} 

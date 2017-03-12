@@ -7,7 +7,7 @@
 	list-style: none;
 }
 
-#main_navigation {
+#main_navigation, #titles_placeholder {
     left: 0;
     top: 0;
     height: 0;
