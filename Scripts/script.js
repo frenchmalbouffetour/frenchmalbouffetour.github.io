@@ -99,6 +99,9 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
                         tooltipRanking.html("");
                         tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + (Math.round(e.delta_beurre) < 0 ? '' : '+') + Math.round(e.delta_beurre) + " % de beurre <br>" + (Math.round(e.delta_huile) < 0 ? '' : '+') + Math.round(e.delta_huile) + " % d'huile <br>");
                         break;
+					case "alcohol":
+                        tooltipIndicator.html(Math.round(e.value) + " % ont une consommation à risque chronique ou de dépendance");
+                        break;
 
                     default:
                         tooltipIndicator.html(Math.round(e.value) + " g/jour");
