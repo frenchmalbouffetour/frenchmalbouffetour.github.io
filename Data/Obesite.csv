@@ -1,0 +1,22 @@
+reg_code,reg_name,value,delta,rank,avg,unit
+11,Ile-de-France,14,-6.666666667,14,15,%
+21,Champagne,21,40,1,15,%
+22,Picardie,20,33.33333333,3,15,%
+23,Haute-Normandie,20,33.33333333,3,15,%
+24,Centre,17,13.33333333,7,15,%
+25,Basse-Normandie,16,6.666666667,9,15,%
+26,Bourgogne,15,0,12,15,%
+31,Nord Pas de Calais,21,40,1,15,%
+41,Lorraine,17,13.33333333,7,15,%
+42,Alsace,19,26.66666667,5,15,%
+43,Franche Comté,15,0,12,15,%
+52,Pays de la Loire,12,-20,18,15,%
+53,Bretagne,12,-20,18,15,%
+54,Poitou Charentes ,14,-6.666666667,14,15,%
+72,Aquitaine,16,6.666666667,9,15,%
+73,Midi-Pyrénées ,12,-20,18,15,%
+74,Limousin,18,20,6,15,%
+82,Rhône-Alpes ,13,-13.33333333,17,15,%
+83,Auvergne,14,-6.666666667,14,15,%
+91,Languedoc-Roussillon,16,6.666666667,9,15,%
+93,Provence-Alpes-Côte d'Azur,12,-20,18,15,%

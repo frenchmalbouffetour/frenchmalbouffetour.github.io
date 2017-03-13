@@ -1,23 +1,22 @@
-Region;moy_alcool_gJ;Classement
-Ile-de-France;9,74;17
-Champagne;10,03;15
-Picardie;14,07;3
-Haute-Normandie;11,4;10
-Centre;9,55;18
-Basse-Normandie;8,44;21
-Bourgogne;14,38;2
-Nord Pas de Calais;11,62;9
-Lorraine;10,85;13
-Alsace;10,99;12
-Franche Comté;9,82;16
-Pas de la Loire;12,39;7
-Bretagne;13,19;4
-Poitou Charentes ;11,25;11
-Aquitaine;12,92;6
-Midi-Pyrénées ;12,29;8
-Limousin;12,92;5
-Rhône-Alpes ;8,95;20
-Auvergne;9,53;19
-Languedoc-Roussillon;14,66;1
-Provence-Alpes-Côte d'Azur;10,68;14
-France;11,14;
+reg_code,reg_name,value,delta,rank,avg
+11,Ile-de-France,7.6,-14.60674157,16,8.9
+21,Champagne,6.8,-23.59550562,8,8.9
+22,Picardie,6.9,-22.47191011,3,8.9
+23,Haute-Normandie,5.7,-35.95505618,12,8.9
+24,Centre,9.6,7.865168539,16,8.9
+25,Basse-Normandie,6,-32.58426966,20,8.9
+26,Bourgogne,9.9,11.23595506,1,8.9
+31,Nord Pas de Calais,9,1.123595506,8,8.9
+41,Lorraine,8.2,-7.865168539,12,8.9
+42,Alsace,6.7,-24.71910112,1,8.9
+43,Franche ComtÃ©,7.5,-15.73033708,16,8.9
+52,Pays de la Loire,11.9,33.70786517,16,8.9
+53,Bretagne,9.8,10.11235955,3,8.9
+54,Poitou Charentes ,9.1,2.247191011,8,8.9
+72,Aquitaine,9.6,7.865168539,3,8.9
+73,Midi-PyrÃ©nÃ©es ,11.5,29.21348315,8,8.9
+74,Limousin,8.4,-5.617977528,3,8.9
+82,RhÃ´ne-Alpes ,9.6,7.865168539,12,8.9
+83,Auvergne,9,1.123595506,21,8.9
+91,Languedoc-Roussillon,12,34.83146067,3,8.9
+93,Provence-Alpes-CÃ´te d'Azur,9.7,8.988764045,12,8.9

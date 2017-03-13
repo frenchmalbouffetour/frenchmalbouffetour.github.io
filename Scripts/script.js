@@ -128,7 +128,7 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 function updateData(plotName) {
     switch (plotName) {
         case "obesity":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "obesity", false); });
+            d3.csv("Data/Obesite.csv", function (error, data) { loadDataset(data, "obesity", false); });
             updateTitles("Obesity", "That's great!");
             $("#map svg").attr("class", "Purples");
             break;
@@ -153,13 +153,18 @@ function updateData(plotName) {
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcohol":
-		    d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "alcohol", true); });
+		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
 		    updateTitles("Alcohol", "Give me that beer!");
             $("#map svg").attr("class", "YlOrBr");
             break;
 		case "coffee":
 		    d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "coffee", true); });
 		    updateTitles("Coffee", "Hey Georges, what else?");
+            $("#map svg").attr("class", "GnYlRd");
+            break;
+		case "charcuterie":
+		    d3.csv("Data/Charcuterie.csv", function (error, data) { loadDataset(data, "charcuterie", true); });
+		    updateTitles("Charcuterie", "Hey Georges, what else?");
             $("#map svg").attr("class", "GnYlRd");
             break;
         default:
@@ -221,6 +226,9 @@ function main() {
 			    return "r" + data.properties.code;
 			})
 			.attr("d", path);
+		/* Remove Corsica from the map */
+		 deps.selectAll('g #'+"r94").remove();
+
 
         // Add departments
         /*deps.selectAll("path")
