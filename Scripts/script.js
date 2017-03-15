@@ -167,9 +167,9 @@ function updateData(plotName) {
 		    updateTitles("Alcool : où boit-on le plus ?", "Consommation d'alcool à risque chronique ou de dépendance");
             $("#map svg").attr("class", "Wine");
             break;
-		case "coffee":
-		    d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "coffee", true); });
-		    updateTitles("Café : où boit-on le plus de café ?", "Consommation journalière de café");
+		case "patisserie":
+		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true); });
+		    updateTitles("Pâtisserie : où sont les gourmands ?", "Consommation journalière de pâtisserie");
             $("#map svg").attr("class", "GnYlRd");
             break;
 		case "charcuterie":
@@ -368,7 +368,7 @@ function main() {
 
     $("#menu_item_7").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Les caféinomanes").style("left", $("#menu_item_7 a img").position().left + "px").style("top", $("#menu_item_7 a img").position().top + "px");
+        menuDiv.html("Les gourmands").style("left", $("#menu_item_7 a img").position().left + "px").style("top", $("#menu_item_7 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
