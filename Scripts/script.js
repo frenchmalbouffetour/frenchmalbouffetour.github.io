@@ -187,6 +187,9 @@ function updateData(plotName) {
 function main() {
     var width = $(window).width();
     var height = $(window).height();
+
+    // Open the modal window
+    $("#myModal").modal("show");
     
     // Create a path object to manipulate geoJSON data
     var path = d3.geoPath();

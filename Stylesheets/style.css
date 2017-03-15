@@ -72,6 +72,15 @@ div.tooltip {
     z-index: 1000;
 }
 
+.modal .modal-dialog {
+    height: auto;
+    width: 100%;
+}
+
+#modal_content {
+    border-radius: 0;
+}
+
 .Blues .q0-9 { fill:rgb(247,251,255) } 
 .Blues .q1-9 { fill:rgb(222,235,247) } 
 .Blues .q2-9 { fill:rgb(198,219,239) } 
