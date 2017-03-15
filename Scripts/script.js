@@ -34,6 +34,9 @@ function updateTitles(newTitle, newSubtitle) {
 }
 
 function loadDataset(data, mapName, invertedIndicatorColor) {
+    var width = $(window).width();
+    var height = $(window).height();
+
     // Define color scale
     var quantile = d3.scaleQuantile()
         .domain([d3.min(data, function (e) { return +e.value; }), d3.max(data, function (e) { return +e.value; })])
@@ -245,29 +248,41 @@ function main() {
             .attr("class", "department");*/
 
         // Load some data
-        updateData('unknown');
+        updateData("unknown");
 
         // Legend
-        /*var legend = svg.append('g')
-            .attr('transform', 'translate(525, 150)')
-            .attr('id', 'legend');
+        var legend = svg.append("g")
+            .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
+            .attr("id", "legend");
 
-        legend.selectAll('.colorbar')
+        // Add colorbar
+        legend.selectAll(".colorbar")
             .data(d3.range(9))
-            .enter().append('svg:rect')
-            .attr('y', function (d) { return d * 20 + 'px'; })
-            .attr('height', '20px')
-            .attr('width', '20px')
-            .attr('x', '0px')
+            .enter().append("svg:rect")
+            .attr("y", function (d) { return d * 20 + "px"; })
+            .attr("height", "20px")
+            .attr("width", "20px")
+            .attr("x", "0px")
             .attr("class", function (d) { return "q" + d + "-9"; });
 
-        var legendScale = d3.scaleLinear()
-            .domain([0, d3.max(csv, function (e) { return +e.POP; })])
-            .range([0, 9 * 20]);
+        // Add legend to each color
+        legend.selectAll(".colorbar")
+            .data(d3.range(9))
+            .enter()
+            .append("text")
+            .attr("x", "30px")
+            .attr("y", function (d) { return (d * 20 + 15) + "px"; })
+            .text(function (d) { return "value"; });
 
-        var legendAxis = svg.append("g")
-            .attr('transform', 'translate(550, 150)')
-            .call(d3.axisRight(legendScale).ticks(6));*/
+        // Add legend title
+        legend.selectAll(".colorbar")
+            .data(d3.range(1))
+            .enter()
+            .append("text")
+            .attr("x", "0px")
+            .attr("y", "-20px")
+            .text("Map Legend:");
+
     };
 
     // What to do on resize
@@ -282,6 +297,9 @@ function main() {
             projection.scale([width * 5])
                 .translate([width / 2, height / 2]);
         }
+
+        // Update legend's position
+        $("#legend").attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
 
         d3.select("#map").attr("width", width).attr("height", height);
         d3.select("svg").attr("width", width).attr("height", height);
