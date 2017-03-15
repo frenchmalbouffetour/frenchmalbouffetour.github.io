@@ -105,6 +105,10 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 					case "alcohol":
                         tooltipIndicator.html(Math.round(e.value) + " % ont une consommation à risque chronique ou de dépendance");
                         break;
+					
+					case "obesity":
+                        tooltipIndicator.html(Math.round(e.value) + " % d'adultes obèses");
+                        break;
 
                     default:
                         tooltipIndicator.html(Math.round(e.value) + " g/jour");
@@ -135,47 +139,47 @@ function updateData(plotName) {
     switch (plotName) {
         case "obesity":
             d3.csv("Data/Obesite.csv", function (error, data) { loadDataset(data, "obesity", false); });
-            updateTitles("Obesity", "That's great!");
+            updateTitles("Obesité : où trouve-t-on le plus d'obèses ?", "Prévalence de l'obésité");
             $("#map svg").attr("class", "Purples");
             break;
         case "vegetables":
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "vegetables", false); });
-            updateTitles("Fruits and vegetables", "Yesss!");
+            updateTitles("Fruits et légumes : qui en mange le moins ?", "Consommation journalière moyenne de fruits et légumes");
             $("#map svg").attr("class", "RdYlGn");
             break;
         case "butter":
             d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "butter", false); });
-            updateTitles("Butter against oil", "The scariest battle of all time!");
+            updateTitles("Beurre vs. Huile : un combat Nord-Sud", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
             $("#map svg").attr("class", "YlGn");
             break;
         case "sport":
             d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport", false); });
-            updateTitles("Sports...", "...on my gaming console!");
+            updateTitles("Sports : où en fait-on le plus ?", "Durée hebdomadaire moyenne d'activité physique intense");
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
             d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood", false); });
-            updateTitles("Fast food", "equals junk food!");
+            updateTitles("Fastfood : où sont les habitués ?", "Pourcentage de la population allant plus d'1 fois par mois dans un fastfood");
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcohol":
 		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
-		    updateTitles("Alcohol", "Give me that beer!");
+		    updateTitles("Alcool : où boit-on le plus ?", "Consommation d'alcool à risque chronique ou de dépendance");
             $("#map svg").attr("class", "YlOrBr");
             break;
 		case "coffee":
 		    d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "coffee", true); });
-		    updateTitles("Coffee", "Hey Georges, what else?");
+		    updateTitles("Café : où boit-on le plus de café ?", "Consommation journalière de café");
             $("#map svg").attr("class", "GnYlRd");
             break;
 		case "charcuterie":
 		    d3.csv("Data/Charcuterie.csv", function (error, data) { loadDataset(data, "charcuterie", true); });
-		    updateTitles("Charcuterie", "Hey Georges, what else?");
+		    updateTitles("Charcuterie : où en mange-t-on le plus ?", "Consommation journalière de charcuterie");
             $("#map svg").attr("class", "GnYlRd");
             break;
         default:
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "default", false); });
-            updateTitles("Default case, not implemented yet...", "Hey Romane, what are you doing?");
+            updateTitles("Default case, not implemented yet...", "Consommation journalière de fruits et légumes");
             $("#map svg").attr("class", "Greys");
     }
 }

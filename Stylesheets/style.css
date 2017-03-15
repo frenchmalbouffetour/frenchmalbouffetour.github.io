@@ -52,13 +52,13 @@ div.tooltip {
 #main_title_placeholder {
     font: Arial sans-serif;
     font-weight: bold;
-	font-size: 3vw;
+	font-size: 2.5vmax;
 
 }
 
 #subtitle_placeholder {
     font: Arial sans-serif;
-	font-size: 2vw;
+	font-size: 1.2vmax;
 	display:inline-block;
 }
 
@@ -71,9 +71,9 @@ div.tooltip {
 
 
 #logo_info{
-	height : 2vw;
-	width: 2vw;
-	margin-left: 1vw;
+	height : 1.3vmax;
+	width: 1.3vmax;
+	margin-left: 0.5vmax;
 	display:inline-block;
 }
 
