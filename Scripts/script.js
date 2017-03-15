@@ -104,7 +104,7 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 						return Math.round(quantile.quantiles()[0]) + " - " + Math.round(quantile.quantiles()[1]) + " "+ unit ;
 						break;
 					case 2:
-						return Math.round(quantile.quantiles()[1]) " - " + Math.round(quantile.quantiles()[2]) + " "+ unit ;
+						return Math.round(quantile.quantiles()[1]) + " - " + Math.round(quantile.quantiles()[2]) + " "+ unit ;
 						break;
 					case 3 :
 						return "> " + Math.round(quantile.quantiles()[2]) + " "+ unit;
@@ -122,7 +122,7 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
             .enter()
             .append("text")
             .attr("x", "0px")
-            .attr("y", "-12px")
+            .attr("y", "-15px")
             .text(function(d) { return legend_title; });
 			
 		
