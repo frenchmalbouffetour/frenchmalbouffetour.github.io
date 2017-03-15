@@ -31,7 +31,7 @@ div.tooltip {
     padding: 2px;
     font: Arial 12px sans-serif;
     background: white;
-    border: 0px;
+    border: 0;
     border-radius: 8px;
     pointer-events: none;
     opacity: 0;
@@ -42,7 +42,6 @@ div.tooltip {
     stroke-width: 2.0px;
 }
 
-
 #main_title_placeholder, #subtitle_placeholder {
     text-align: center;
     color: black;
@@ -52,29 +51,34 @@ div.tooltip {
 #main_title_placeholder {
     font: Arial sans-serif;
     font-weight: bold;
-	font-size: 2.5vmax;
-
+	font-size: 26pt;
 }
 
 #subtitle_placeholder {
     font: Arial sans-serif;
-	font-size: 1.2vmax;
+	font-size: 14pt;
 	display:inline-block;
 }
 
 #titles_placeholder{
 	text-align: center;
-	margin-left: auto; 
-	margin-right: auto;
-	width: 60%;
 }
 
-
-#logo_info{
-	height : 1.3vmax;
-	width: 1.3vmax;
-	margin-left: 0.5vmax;
+#info_logo{
+	height: 2em;
+	width: 2em;
+	margin-left: 20px;
 	display:inline-block;
+    z-index: 1000;
+}
+
+.modal .modal-dialog {
+    height: auto;
+    width: 100%;
+}
+
+#modal_content {
+    border-radius: 0;
 }
 
 .Blues .q0-9 { fill:rgb(247,251,255) } 

@@ -22,13 +22,13 @@
         <button class="cn-button" id="cn-button" onclick="handler();" onfocus="handler();">MENU</button>
         <div class="cn-wrapper" id="cn-wrapper">
             <ul id="cn-ul">
-                <li id="menu_item_1"><a href="#" onclick="updateData('obesity');"><img src="Logos/logo_obesity.svg" alt="obesity" height="40px" width="40px"/></a></li>
+                <li id="menu_item_1"><a href="#" onclick="updateData('obesity');"><img src="Logos/logo_obesity.svg" alt="obesity" height="40px" width="40px" /></a></li>
                 <li id="menu_item_2"><a href="#" onclick="updateData('vegetables');"><img src="Logos/logo_veggie_1.svg" alt="vegetables" height="40px" width="40px" /></a></li>
                 <li id="menu_item_3"><a href="#" onclick="updateData('butter');"><img src="Logos/logo_olive.svg" alt="butter" height="40px" width="40px" /></a></li>
                 <li id="menu_item_4"><a href="#" onclick="updateData('sport');"><img src="Logos/logo_sport.svg" alt="sport" height="40px" width="40px" /></a></li>
                 <li id="menu_item_5"><a href="#" onclick="updateData('fastfood');"><img src="Logos/logo_fastfood.svg" alt="fastfood" height="40px" width="40px" /></a></li>
                 <li id="menu_item_6"><a href="#" onclick="updateData('alcohol');"><img src="Logos/logo_alcool.svg" alt="alcool" height="40px" width="40px" /></a></li>
-                <li id="menu_item_7"><a href="#" onclick="updateData('coffee');"><img src="Logos/logo_cafe.svg" alt="coffee" height="40px" width="40px" /></a></li>
+                <li id="menu_item_7"><a href="#" onclick="updateData('patisserie');"><img src="Logos/logo_patisserie.svg" alt="coffee" height="40px" width="40px" /></a></li>
                 <li id="menu_item_8"><a href="#" onclick="updateData('charcuterie');"><img src="Logos/logo_charc2.svg" alt="charcuterie" height="40px" width="40px" /></a></li>
             </ul>
         </div>
@@ -37,15 +37,40 @@
 
     <div id="titles_placeholder">
         <h1 id="main_title_placeholder">Main title</h1>
-		<span>  <h2 id="subtitle_placeholder"> Sub title </h2> <img src="Logos/logo_information.svg" id = "logo_info"/> </span>
+        <div>
+            <h2 id="subtitle_placeholder"> Sub title</h2>
+            <img src="Logos/logo_information.svg" id="info_logo" />
+        </div>
     </div>
 
     <div id="map" class="container-fluid"></div>
+
     <div id="map_tooltip" class="tooltip">
         <p id="tooltip_region_name" class="boldText"></p>
         <p id="tooltip_indicator"></p>
         <p id="tooltip_ranking"></p>
         <p id="tooltip_mean_indicator"></p>
+    </div>
+
+    <div id="info_tooltip" class="tooltip">Code de Romane ici...</div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content" id="modal_content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 </body>
 </html>
