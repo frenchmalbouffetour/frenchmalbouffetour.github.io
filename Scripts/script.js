@@ -48,7 +48,63 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
     var tooltipIndicator = d3.select("#tooltip_indicator");
     var tooltipRanking = d3.select("#tooltip_ranking");
     var tooltipMeanIndicator = d3.select("#tooltip_mean_indicator");
+	
+	
+	// Legend
+	d3.select('#legend').remove();
+	var legend = d3.select('#svg').append("g")
+            .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
+            .attr("id", "legend");
+		
+		
+        // Add colorbar
+        legend.selectAll(".colorbar")
+            .data(d3.range(4))
+            .enter().append("svg:rect")
+            .attr("y", function (d) { return d * 20 + "px"; })
+            .attr("height", "20px")
+            .attr("width", "20px")
+            .attr("x", "0px")
+            .attr("class", function (d) { return "q" + d + "-9"; });
 
+        // Add legend to each color
+        legend.selectAll(".colorbar")
+            .data(d3.range(4))
+            .enter()
+            .append("text")
+            .attr("x", "30px")
+            .attr("y", function (d) { return (d * 20 + 15) + "px"; })
+            .text(function (d) {
+			switch(d) {
+			case 0 :
+			    return "< " + Math.round(quantile.quantiles()[0]);
+			    break;
+			case 1:
+			    return Math.round(quantile.quantiles()[0]) + " - " + Math.round(quantile.quantiles()[1]);
+				break;
+			case 2:
+			    return Math.round(quantile.quantiles()[1]) + " - " + Math.round(quantile.quantiles()[2]);
+				break;
+			case 3 :
+			    return "> " + Math.round(quantile.quantiles()[2]);
+				break;
+			}
+
+			})
+			.attr("id","legendText");
+
+        // Add legend title
+        legend.selectAll(".colorbar")
+            .data(d3.range(1))
+            .enter()
+            .append("text")
+            .attr("x", "0px")
+            .attr("y", "-20px")
+            .text("Légende");
+			
+		
+		
+	
     // Read data from csv and put it on the map
     data.forEach(function (e, i) { // For each item in the csv file
         d3.select("#r" + e.reg_code) // Select a region from the map
@@ -240,22 +296,10 @@ function main() {
 		 deps.selectAll('g #'+"r94").remove();
 
 
-        // Add departments
-        /*deps.selectAll("path")
-			.data(departements.features)
-			.enter()
-			.append("path")
-			.attr('id', function (data) {
-			    return "d" + data.properties.code;
-			})
-			.attr("d", path)
-            .attr("class", "department");*/
-
         // Load some data
         updateData("unknown");
-
-        // Legend
-        var legend = svg.append("g")
+		
+	    /*var legend = svg.append("g")
             .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
             .attr("id", "legend");
 
@@ -276,7 +320,7 @@ function main() {
             .append("text")
             .attr("x", "30px")
             .attr("y", function (d) { return (d * 20 + 15) + "px"; })
-            .text(function (d) { return "value"; });
+            .text(function (d) { return "test";});
 
         // Add legend title
         legend.selectAll(".colorbar")
@@ -285,7 +329,8 @@ function main() {
             .append("text")
             .attr("x", "0px")
             .attr("y", "-20px")
-            .text("Map Legend:");
+            .text("Légende");*/
+ 
 
     };
 
