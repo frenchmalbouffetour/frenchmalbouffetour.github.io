@@ -42,9 +42,6 @@ div.tooltip {
     stroke-width: 2.0px;
 }
 
-#span_subtitle_placeholder{
-	margin: 0 auto;
-}
 
 #main_title_placeholder, #subtitle_placeholder {
     text-align: center;
@@ -62,13 +59,22 @@ div.tooltip {
 #subtitle_placeholder {
     font: Arial sans-serif;
 	font-size: 2vw;
-	display:inline;
+	display:inline-block;
 }
+
+#titles_placeholder{
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+	width: 60%;
+}
+
 
 #logo_info{
 	height : 2vw;
 	width: 2vw;
 	margin-left: 1vw;
+	display:inline-block;
 }
 
 .Blues .q0-9 { fill:rgb(247,251,255) } 
