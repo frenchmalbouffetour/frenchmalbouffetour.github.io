@@ -203,7 +203,6 @@ function main() {
 		    .scale([width * 5])
 		    .translate([width / 2, height / 2]);
     }
-    
 
     path.projection(projection); // Assign projection to path object
 
@@ -380,6 +379,15 @@ function main() {
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
+    });
+
+    // Info tooltip
+    $("#info_logo").on("mouseover", function (d) {
+        d3.select("#info_tooltip").transition().duration(200).style("opacity", .9);
+        d3.select("#info_tooltip").style("left", ($("#info_logo").position().left + 40) + "px").style("top", ($("#info_logo").position().top + 100) + "px");
+    }).on("mouseout", function (d) {
+        d3.select("#info_tooltip").transition().duration(1).style("opacity", 0);
+        d3.select("#info_tooltip").style("left", "0px").style("top", "0px");
     });
 }
 
