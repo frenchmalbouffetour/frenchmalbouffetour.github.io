@@ -181,7 +181,7 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
                         tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + (Math.round(e.delta_beurre) < 0 ? '' : '+') + Math.round(e.delta_beurre) + " % de beurre <br>" + (Math.round(e.delta_huile) < 0 ? '' : '+') + Math.round(e.delta_huile) + " % d'huile <br>");
                         break;
 					case "alcohol":
-                        tooltipIndicator.html(Math.round(e.value) + " % ont une consommation à risque chronique ou de dépendance");
+                        tooltipIndicator.html(Math.round(e.value) + " % ont une ivresse répétée");
                         break;
 					
 					case "obesity":
@@ -242,7 +242,7 @@ function updateData(plotName) {
             break;
 		case "alcohol":
 		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
-		    updateTitles("Alcool : où boit-on le plus ?", "Consommation d'alcool à risque chronique ou de dépendance");
+		    updateTitles("Alcool : où boit-on le plus ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
             $("#map svg").attr("class", "Wine");
             break;
 		case "patisserie":

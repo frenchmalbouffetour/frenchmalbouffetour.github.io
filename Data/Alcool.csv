@@ -1,22 +1,22 @@
-reg_code,reg_name,value,delta,rank,avg
-11,Ile-de-France,7.6,-14.60674157,16,8.9
-21,Champagne,6.8,-23.59550562,8,8.9
-22,Picardie,6.9,-22.47191011,3,8.9
-23,Haute-Normandie,5.7,-35.95505618,12,8.9
-24,Centre,9.6,7.865168539,16,8.9
-25,Basse-Normandie,6,-32.58426966,20,8.9
-26,Bourgogne,9.9,11.23595506,1,8.9
-31,Nord Pas de Calais,9,1.123595506,8,8.9
-41,Lorraine,8.2,-7.865168539,12,8.9
-42,Alsace,6.7,-24.71910112,1,8.9
-43,Franche Comté,7.5,-15.73033708,16,8.9
-52,Pays de la Loire,11.9,33.70786517,16,8.9
-53,Bretagne,9.8,10.11235955,3,8.9
-54,Poitou Charentes ,9.1,2.247191011,8,8.9
-72,Aquitaine,9.6,7.865168539,3,8.9
-73,Midi-Pyrénées ,11.5,29.21348315,8,8.9
-74,Limousin,8.4,-5.617977528,3,8.9
-82,Rhône-Alpes ,9.6,7.865168539,12,8.9
-83,Auvergne,9,1.123595506,21,8.9
-91,Languedoc-Roussillon,12,34.83146067,3,8.9
-93,Provence-Alpes-Côte d'Azur,9.7,8.988764045,12,8.9
+﻿reg_code,reg_name,value,delta,rank,avg,unit
+11,Ile-de-France,8,-0.1,9,8.1,%
+21,Champagne,7,-1.1,14,8.1,%
+22,Picardie,6,-2.1,17,8.1,%
+23,Haute-Normandie,6,-2.1,17,8.1,%
+24,Centre,7,-1.1,14,8.1,%
+25,Basse-Normandie,8,-0.1,9,8.1,%
+26,Bourgogne,7,-1.1,14,8.1,%
+31,Nord Pas de Calais,6,-2.1,17,8.1,%
+41,Lorraine,9,0.9,4,8.1,%
+42,Alsace,5,-3.1,21,8.1,%
+43,Franche Comté,6,-2.1,17,8.1,%
+52,Pays de la Loire,10,1.9,2,8.1,%
+53,Bretagne,15,6.9,1,8.1,%
+54,Poitou Charentes ,8,-0.1,9,8.1,%
+72,Aquitaine,9,0.9,4,8.1,%
+73,Midi-Pyrénées ,9,0.9,4,8.1,%
+74,Limousin,8,-0.1,9,8.1,%
+82,Rhône-Alpes ,9,0.9,4,8.1,%
+83,Auvergne,9,0.9,4,8.1,%
+91,Languedoc-Roussillon,10,1.9,2,8.1,%
+93,Provence-Alpes-Côte d'Azur,8,-0.1,9,8.1,%
