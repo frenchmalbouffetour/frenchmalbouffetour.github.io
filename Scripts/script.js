@@ -83,13 +83,13 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 					unit = "minutes/semaine";
 					break;
 				case "fastfood":
-					unit = "% mangent plus d'1 fois/mois dans un fastfood";
+					unit = "%";
 					break;
 				case "alcohol":
-					unit = "TO DEFINE";
+					unit = "%";
 					break;
 				case "obesity":
-					unit = "% d'adultes obèses";
+					unit = "%";
 					break;
 				default:
 					unit = "g/jour";
@@ -101,10 +101,10 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 						return "< " + Math.round(quantile.quantiles()[0]) + " " + unit;
 						break;
 					case 1:
-						return Math.round(quantile.quantiles()[0]) + " " + unit+ " - " + Math.round(quantile.quantiles()[1]) + " "+ unit ;
+						return Math.round(quantile.quantiles()[0]) + " - " + Math.round(quantile.quantiles()[1]) + " "+ unit ;
 						break;
 					case 2:
-						return Math.round(quantile.quantiles()[1]) + " "  + unit+ " - " + Math.round(quantile.quantiles()[2]) + " "+ unit ;
+						return Math.round(quantile.quantiles()[1]) " - " + Math.round(quantile.quantiles()[2]) + " "+ unit ;
 						break;
 					case 3 :
 						return "> " + Math.round(quantile.quantiles()[2]) + " "+ unit;
@@ -114,15 +114,16 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 
 			})
 			.attr("id","legendText");
-
+			
+		var legend_title = "Légende :";
         // Add legend title
         legend.selectAll(".colorbar")
             .data(d3.range(1))
             .enter()
             .append("text")
             .attr("x", "0px")
-            .attr("y", "-20px")
-            .text("Légende");
+            .attr("y", "-12px")
+            .text(function(d) { return legend_title; });
 			
 		
 		
