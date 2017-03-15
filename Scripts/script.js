@@ -56,7 +56,6 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
             .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
             .attr("id", "legend");
 		
-		
         // Add colorbar
         legend.selectAll(".colorbar")
             .data(d3.range(4))
@@ -75,20 +74,43 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
             .attr("x", "30px")
             .attr("y", function (d) { return (d * 20 + 15) + "px"; })
             .text(function (d) {
-			switch(d) {
-			case 0 :
-			    return "< " + Math.round(quantile.quantiles()[0]);
-			    break;
-			case 1:
-			    return Math.round(quantile.quantiles()[0]) + " - " + Math.round(quantile.quantiles()[1]);
-				break;
-			case 2:
-			    return Math.round(quantile.quantiles()[1]) + " - " + Math.round(quantile.quantiles()[2]);
-				break;
-			case 3 :
-			    return "> " + Math.round(quantile.quantiles()[2]);
-				break;
-			}
+			
+			
+		var unit = "g/jour";
+			
+			switch (mapName) {
+				case "sport":
+					unit = "minutes/semaine";
+					break;
+				case "fastfood":
+					unit = "% mangent plus d'1 fois/mois dans un fastfood";
+					break;
+				case "alcohol":
+					unit = "TO DEFINE";
+					break;
+				case "obesity":
+					unit = "% d'adultes obèses";
+					break;
+				default:
+					unit = "g/jour";
+			
+			}	
+
+				switch(d) {
+					case 0 :
+						return "< " + Math.round(quantile.quantiles()[0]) + " " + unit;
+						break;
+					case 1:
+						return Math.round(quantile.quantiles()[0]) + " " + unit+ " - " + Math.round(quantile.quantiles()[1]) + " "+ unit ;
+						break;
+					case 2:
+						return Math.round(quantile.quantiles()[1]) + " "  + unit+ " - " + Math.round(quantile.quantiles()[2]) + " "+ unit ;
+						break;
+					case 3 :
+						return "> " + Math.round(quantile.quantiles()[2]) + " "+ unit;
+						break;
+			    }
+			
 
 			})
 			.attr("id","legendText");
@@ -300,38 +322,6 @@ function main() {
 
         // Load some data
         updateData("unknown");
-		
-	    /*var legend = svg.append("g")
-            .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
-            .attr("id", "legend");
-
-        // Add colorbar
-        legend.selectAll(".colorbar")
-            .data(d3.range(4))
-            .enter().append("svg:rect")
-            .attr("y", function (d) { return d * 20 + "px"; })
-            .attr("height", "20px")
-            .attr("width", "20px")
-            .attr("x", "0px")
-            .attr("class", function (d) { return "q" + d + "-9"; });
-
-        // Add legend to each color
-        legend.selectAll(".colorbar")
-            .data(d3.range(4))
-            .enter()
-            .append("text")
-            .attr("x", "30px")
-            .attr("y", function (d) { return (d * 20 + 15) + "px"; })
-            .text(function (d) { return "test";});
-
-        // Add legend title
-        legend.selectAll(".colorbar")
-            .data(d3.range(1))
-            .enter()
-            .append("text")
-            .attr("x", "0px")
-            .attr("y", "-20px")
-            .text("Légende");*/
  
 
     };
