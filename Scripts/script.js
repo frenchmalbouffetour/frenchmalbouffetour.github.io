@@ -40,7 +40,7 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
     // Define color scale
     var quantile = d3.scaleQuantile()
         .domain([d3.min(data, function (e) { return +e.value; }), d3.max(data, function (e) { return +e.value; })])
-        .range(d3.range(9));
+        .range(d3.range(4));
 
     // Get tooltip
     var div = d3.select("#map_tooltip");
@@ -165,7 +165,7 @@ function updateData(plotName) {
 		case "alcohol":
 		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
 		    updateTitles("Alcool : où boit-on le plus ?", "Consommation d'alcool à risque chronique ou de dépendance");
-            $("#map svg").attr("class", "YlOrBr");
+            $("#map svg").attr("class", "Wine");
             break;
 		case "coffee":
 		    d3.csv("Data/cafe_resultats.csv", function (error, data) { loadDataset(data, "coffee", true); });
@@ -261,7 +261,7 @@ function main() {
 
         // Add colorbar
         legend.selectAll(".colorbar")
-            .data(d3.range(9))
+            .data(d3.range(4))
             .enter().append("svg:rect")
             .attr("y", function (d) { return d * 20 + "px"; })
             .attr("height", "20px")
@@ -271,7 +271,7 @@ function main() {
 
         // Add legend to each color
         legend.selectAll(".colorbar")
-            .data(d3.range(9))
+            .data(d3.range(4))
             .enter()
             .append("text")
             .attr("x", "30px")
