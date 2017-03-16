@@ -55,28 +55,9 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 	var legend = d3.select('#svg').append("g")
             .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
             .attr("id", "legend");
-		
-        // Add colorbar
-        legend.selectAll(".colorbar")
-            .data(d3.range(4))
-            .enter().append("svg:rect")
-            .attr("y", function (d) { return d * 20 + "px"; })
-            .attr("height", "20px")
-            .attr("width", "20px")
-            .attr("x", "0px")
-            .attr("class", function (d) { return "q" + d + "-9"; });
-
-        // Add legend to each color
-        legend.selectAll(".colorbar")
-            .data(d3.range(4))
-            .enter()
-            .append("text")
-            .attr("x", "30px")
-            .attr("y", function (d) { return (d * 20 + 15) + "px"; })
-            .text(function (d) {
-			
-			
-		var unit = "g/jour";
+	
+    var unit = "g/jour";
+	var legend_title = "Légende :";
 			
 			switch (mapName) {
 				case "sport":
@@ -91,10 +72,50 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 				case "obesity":
 					unit = "%";
 					break;
+				case "butter":
+					legend_title = "Consomme plus de :";
+					break;
 				default:
 					unit = "g/jour";
 			
-			}	
+			}		
+	
+	    
+		var range_legend = 4;
+	
+		if (mapName == "butter") { range_legend = 2; }
+			
+			
+        // Add colorbar
+        legend.selectAll(".colorbar")
+            .data(d3.range(range_legend))
+            .enter().append("svg:rect")
+            .attr("y", function (d) { return d * 20 + "px"; })
+            .attr("height", "20px")
+            .attr("width", "20px")
+            .attr("x", "0px")
+            .attr("class", function (d) { return "q" + d + "-9"; });
+
+        // Add legend to each color
+        legend.selectAll(".colorbar")
+            .data(d3.range(range_legend))
+            .enter()
+            .append("text")
+            .attr("x", "30px")
+            .attr("y", function (d) { return (d * 20 + 15) + "px"; })
+            .text(function (d) {
+				
+				if (mapName == "butter"){ 
+				
+				switch(d) {
+					case 0 :
+						return "Beurre";
+						break;
+					case 1:
+						return "Huile";
+						break;
+				}
+				} else {
 
 				switch(d) {
 					case 0 :
@@ -110,12 +131,14 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 						return "> " + Math.round(quantile.quantiles()[2]) + " "+ unit;
 						break;
 			    }
-			
+				
+				}
 
 			})
 			.attr("id","legendText");
 			
-		var legend_title = "Légende :";
+		
+		
         // Add legend title
         legend.selectAll(".colorbar")
             .data(d3.range(1))
@@ -136,9 +159,9 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
                     return "region q" + quantile(+e.value) + "-9";
                 } else {
                     if (e.battle_result == "Beurre") {
-                        return "region q1-9";
+                        return "region q0-9";
                     } else {
-                        return "region q5-9";
+                        return "region q1-9";
                     }
                 }
             }) // Assign it a color
@@ -229,7 +252,7 @@ function updateData(plotName) {
         case "butter":
             d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "butter", false); });
             updateTitles("Beurre vs. Huile : un combat Nord-Sud", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
-            $("#map svg").attr("class", "YlGn");
+            $("#map svg").attr("class", "Butter");
             break;
         case "sport":
             d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport", false); });
