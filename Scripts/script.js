@@ -66,13 +66,13 @@ function updateTitles(mapName, newTitle, newSubtitle) {
 			break;
 		case "fastfood":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("<b>Définition </b>: Le pourcentage de la population allant plus d'1 fois par mois dans un fastfood correspond au nombre d'individus ayant indiqué une fréquence de fréquentation des fastfoods supérieure ou égale à 1 fois par mois au cours de l'enquête INCA 2 rapporté par rapport au nombre d'invididus de la population étudiée.");
+			infotooltipDesc.html("<b>Définition </b>: Le pourcentage de la population allant plus d'1 fois par mois dans un fastfood correspond au nombre d'individus ayant indiqué une fréquence de fréquentation des fastfoods supérieure ou égale à 1 fois par mois au cours de l'enquête INCA 2 rapporté au nombre d'invididus de la population étudiée.");
 			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
 			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "alcohol":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("<b>Définition </b>: ");
+			infotooltipDesc.html("<b>Définition </b>: Le niveau d'ivresses répétées (en %) correspond à la part de la population étudiée ayant déclaré avoir été ivre au moins trois fois durant les douze derniers mois. Notons que ce type d'alcoolisation est à distinguer du nombre de buveurs quotiens ou du nombre de personnes dans une situation de dépendance. Pour plus d'informations, consulter l'Atlas des usages de substances psychoactives 2010 publié par l'Inpes.");
 			infotooltipSource.html("<b>Source </b>: <a href='http://inpes.santepubliquefrance.fr/Barometres/barometre-sante-2010/atlas-usages-substances-psychoactives-2010/index.asp' target='_blank'> Enquête Baromètre santé de l'Inpes </a> (Inpes)");
 			infotooltipYear.html("<b>Année </b>: 2010");
 			break;
@@ -309,7 +309,7 @@ function updateData(plotName) {
             break;
         case "butter":
             d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "butter", false); });
-            updateTitles("butter","Beurre vs. Huile : un combat Nord-Sud", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
+            updateTitles("butter","Beurre vs Huile", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
             $("#map svg").attr("class", "Butter");
             break;
         case "sport":
@@ -319,17 +319,17 @@ function updateData(plotName) {
             break;
         case "fastfood":
             d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood", false); });
-            updateTitles("fastfood","Fastfood : où sont les habitués ?", "Pourcentage de la population allant plus d'1 fois par mois dans un fastfood");
+            updateTitles("fastfood","Fastfoods : qui y va régulièrement ?", "Pourcentage de la population allant plus d'1 fois par mois dans un fastfood");
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcohol":
 		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
-		    updateTitles("alcohol","Alcool : où boit-on le plus ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
+		    updateTitles("alcohol","Alcool : où se prend-on le plus de cuites ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
             $("#map svg").attr("class", "Wine");
             break;
 		case "patisserie":
 		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true); });
-		    updateTitles("patisserie","Pâtisserie : où sont les gourmands ?", "Consommation journalière de pâtisseries");
+		    updateTitles("patisserie","Pâtisserie : où sont les plus gourmands ?", "Consommation journalière de pâtisseries");
             $("#map svg").attr("class", "GnYlRd");
             break;
 		case "charcuterie":
@@ -495,7 +495,7 @@ function main() {
 
     $("#menu_item_8").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9);
-        menuDiv.html("Mais que fait Romane? le graphe n'existe pas!!!").style("left", $("#menu_item_8 a img").position().left + "px").style("top", $("#menu_item_8 a img").position().top + "px");
+        menuDiv.html("Les amateurs de charcuterie").style("left", $("#menu_item_8 a img").position().left + "px").style("top", $("#menu_item_8 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
