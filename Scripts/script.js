@@ -28,9 +28,68 @@ function handler() {
     open = !open;
 }
 
-function updateTitles(newTitle, newSubtitle) {
+function updateTitles(mapName, newTitle, newSubtitle) {
+	//Update Main Titles
     $("#main_title_placeholder").text(newTitle);
     $("#subtitle_placeholder").text(newSubtitle);
+	
+	// Update Information Tooltip (information logo)
+	var infotooltipIndicator = d3.select("#info_tooltip_indicator");
+	var infotooltipDesc = d3.select("#info_tooltip_desc");
+	var infotooltipSource = d3.select("#info_tooltip_source");
+	var infotooltipYear = d3.select("#info_tooltip_year");
+	
+	switch (mapName) {
+		case "obesity":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='http://www.roche.fr/content/dam/roche_france/fr_FR/doc/obepi_2012.pdf' target='_blank'> Enquête ObEpi</a> (INSERM)");
+			infotooltipYear.html("Année : 2012");
+			break;
+		case "vegetables":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("Année : 2007");
+			break;
+		case "butter":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("Année : 2007");
+			break;
+		case "sport":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("Année : 2007");
+			break;
+		case "fastfood":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("Année : 2007");
+			break;
+		case "alcohol":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='http://inpes.santepubliquefrance.fr/Barometres/barometre-sante-2010/atlas-usages-substances-psychoactives-2010/index.asp' target='_blank'> Enquête Baromètre santé de l'Inpes </a> (Inpes)");
+			infotooltipYear.html("Année : 2010");
+			break;
+		case "patisserie":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("Année : 2007");
+			break;
+		case "charcuterie":
+			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
+			infotooltipDesc.html("DESCRIPTION");
+			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("Année : 2007");
+			break;
+	}		
+	
 }
 
 function loadDataset(data, mapName, invertedIndicatorColor) {
@@ -77,7 +136,6 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 					break;
 				default:
 					unit = "g/jour";
-			
 			}		
 	
 	    
@@ -241,47 +299,47 @@ function updateData(plotName) {
     switch (plotName) {
         case "obesity":
             d3.csv("Data/Obesite.csv", function (error, data) { loadDataset(data, "obesity", false); });
-            updateTitles("Obesité : où trouve-t-on le plus d'obèses ?", "Prévalence de l'obésité");
+            updateTitles("obesity","Obesité : où trouve-t-on le plus d'obèses ?", "Prévalence de l'obésité");
             $("#map svg").attr("class", "Purples");
             break;
         case "vegetables":
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "vegetables", false); });
-            updateTitles("Fruits et légumes : qui en mange le moins ?", "Consommation journalière moyenne de fruits et légumes");
+            updateTitles("vegetables","Fruits et légumes : qui en mange le moins ?", "Consommation journalière moyenne de fruits et légumes");
             $("#map svg").attr("class", "RdYlGn");
             break;
         case "butter":
             d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "butter", false); });
-            updateTitles("Beurre vs. Huile : un combat Nord-Sud", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
+            updateTitles("butter","Beurre vs. Huile : un combat Nord-Sud", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
             $("#map svg").attr("class", "Butter");
             break;
         case "sport":
             d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport", false); });
-            updateTitles("Sports : où en fait-on le plus ?", "Durée hebdomadaire moyenne d'activité physique intense");
+            updateTitles("sport","Sports : où en fait-on le plus ?", "Durée hebdomadaire moyenne d'activité physique intense");
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
             d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood", false); });
-            updateTitles("Fastfood : où sont les habitués ?", "Pourcentage de la population allant plus d'1 fois par mois dans un fastfood");
+            updateTitles("fastfood","Fastfood : où sont les habitués ?", "Pourcentage de la population allant plus d'1 fois par mois dans un fastfood");
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcohol":
 		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
-		    updateTitles("Alcool : où boit-on le plus ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
+		    updateTitles("alcohol","Alcool : où boit-on le plus ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
             $("#map svg").attr("class", "Wine");
             break;
 		case "patisserie":
 		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true); });
-		    updateTitles("Pâtisserie : où sont les gourmands ?", "Consommation journalière de pâtisserie");
+		    updateTitles("patisserie","Pâtisserie : où sont les gourmands ?", "Consommation journalière de pâtisserie");
             $("#map svg").attr("class", "GnYlRd");
             break;
 		case "charcuterie":
 		    d3.csv("Data/Charcuterie.csv", function (error, data) { loadDataset(data, "charcuterie", true); });
-		    updateTitles("Charcuterie : où en mange-t-on le plus ?", "Consommation journalière de charcuterie");
+		    updateTitles("charcuterie","Charcuterie : où en mange-t-on le plus ?", "Consommation journalière de charcuterie");
             $("#map svg").attr("class", "GnYlRd");
             break;
         default:
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "default", false); });
-            updateTitles("Default case, not implemented yet...", "Consommation journalière de fruits et légumes");
+            updateTitles("vegetables","Default case, not implemented yet...", "Consommation journalière de fruits et légumes");
             $("#map svg").attr("class", "Greys");
     }
 }

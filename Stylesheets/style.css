@@ -37,6 +37,26 @@ div.tooltip {
     opacity: 0;
 }
 
+div.infotooltip {
+    position: absolute;
+    color: black;
+    width: 350px;
+    padding: 2px;
+    font: Arial 12px sans-serif;
+    background: white;
+    border: 0;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+	margin-top: 10px;
+	margin-left: -170px;
+}
+
+p.infotooltiptext{
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
 .region {
     stroke: #fff;
     stroke-width: 2.0px;
@@ -51,12 +71,12 @@ div.tooltip {
 #main_title_placeholder {
     font: Arial sans-serif;
     font-weight: bold;
-	font-size: 26pt;
+	font-size: 24pt;
 }
 
 #subtitle_placeholder {
     font: Arial sans-serif;
-	font-size: 14pt;
+	font-size: 12pt;
 	display:inline-block;
 }
 
@@ -65,8 +85,8 @@ div.tooltip {
 }
 
 #info_logo{
-	height: 2em;
-	width: 2em;
+	height: 1.5em;
+	width: 1.5em;
 	margin-left: 20px;
 	display:inline-block;
     z-index: 1000;
