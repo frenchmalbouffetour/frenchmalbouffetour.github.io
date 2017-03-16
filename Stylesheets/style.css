@@ -82,6 +82,7 @@ p.infotooltiptext{
 
 #titles_placeholder{
 	text-align: center;
+
 }
 
 #info_logo{
@@ -90,6 +91,28 @@ p.infotooltiptext{
 	margin-left: 20px;
 	display:inline-block;
     z-index: 1000;
+}
+
+#winners{
+	position: relative;
+	float: right;
+	margin-right: 20px;
+}
+
+.winner_name{
+	text-align: center;
+    color: black;
+    z-index: 1000;
+	font: Arial sans-serif;
+	font-size: 12pt;
+	display:inline-block;
+}
+
+.winner_logo{
+	height: 5em;
+	width: 5em;
+	display:inline-block;
+	z-index: 1000;
 }
 
 .modal .modal-dialog {
