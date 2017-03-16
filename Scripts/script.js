@@ -41,52 +41,52 @@ function updateTitles(mapName, newTitle, newSubtitle) {
 	
 	switch (mapName) {
 		case "obesity":
-			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='http://www.roche.fr/content/dam/roche_france/fr_FR/doc/obepi_2012.pdf' target='_blank'> Enquête ObEpi</a> (INSERM)");
-			infotooltipYear.html("Année : 2012");
+			infotooltipIndicator.html("<b>" + newSubtitle + " (en %) </b>");
+			infotooltipDesc.html("<b>Définition </b>: La prévalence de l'obésité correspond à la part (en %) de la population étudiée diagnostiquée comme obèse. On qualifie d'obèse une personne dont l'Indice de Masse Corporelle (IMC) est supérieur à 30 kg/m². Rappelons que les causes de l'obésité sont toutefois complexes : au-delà de l'alimentation, la génétique et certains facteurs environnementaux semblent en effet impliqués.");
+			infotooltipSource.html("<b>Source </b>: <a href='http://www.roche.fr/content/dam/roche_france/fr_FR/doc/obepi_2012.pdf' target='_blank'> Enquête ObEpi</a> (INSERM)");
+			infotooltipYear.html("<b>Année </b>: 2012");
 			break;
 		case "vegetables":
-			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
-			infotooltipYear.html("Année : 2007");
+			infotooltipIndicator.html("<b>" + newSubtitle + " (en g/jour)</b>");
+			infotooltipDesc.html("<b>Définition </b>: La consommation journalière moyenne de fruits et légumes correspond à la quantité moyenne en grammes consommée au cours d'une journée par un individu de la population étudiée.");
+			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "butter":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
-			infotooltipYear.html("Année : 2007");
+			infotooltipDesc.html("<b>Définition </b>: La consommation journalière moyenne de beurre (resp. d'huile) correspond à la quantité moyenne en grammes consommée au cours d'une journée par un individu de la population étudiée. Ces deux quantités en grammes sont ensuite comparées pour déterminer si l'individu moyen de la région étudiée consomme plus de beurre ou plus d'huile.");
+			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "sport":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
-			infotooltipYear.html("Année : 2007");
+			infotooltipDesc.html("<b>Définition </b>: La durée hebdomadaire moyenne d'activité physique intense correspond au temps moyen en minutes consacré à une activité sportive intense au cours d'une semaine par un individu de la population étudiée.");
+			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "fastfood":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
-			infotooltipYear.html("Année : 2007");
+			infotooltipDesc.html("<b>Définition </b>: Le pourcentage de la population allant plus d'1 fois par mois dans un fastfood correspond au nombre d'individus ayant indiqué une fréquence de fréquentation des fastfoods supérieure ou égale à 1 fois par mois au cours de l'enquête INCA 2 rapporté par rapport au nombre d'invididus de la population étudiée.");
+			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "alcohol":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='http://inpes.santepubliquefrance.fr/Barometres/barometre-sante-2010/atlas-usages-substances-psychoactives-2010/index.asp' target='_blank'> Enquête Baromètre santé de l'Inpes </a> (Inpes)");
-			infotooltipYear.html("Année : 2010");
+			infotooltipDesc.html("<b>Définition </b>: ");
+			infotooltipSource.html("<b>Source </b>: <a href='http://inpes.santepubliquefrance.fr/Barometres/barometre-sante-2010/atlas-usages-substances-psychoactives-2010/index.asp' target='_blank'> Enquête Baromètre santé de l'Inpes </a> (Inpes)");
+			infotooltipYear.html("<b>Année </b>: 2010");
 			break;
 		case "patisserie":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
-			infotooltipYear.html("Année : 2007");
+			infotooltipDesc.html("<b>Définition </b>: La consommation journalière moyenne de pâtisseries correspond à la quantité moyenne en grammes consommée au cours d'une journée par un individu de la population étudiée.");
+			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "charcuterie":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
-			infotooltipDesc.html("DESCRIPTION");
-			infotooltipSource.html("Source : <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
-			infotooltipYear.html("Année : 2007");
+			infotooltipDesc.html("<b>Définition </b>: La consommation journalière moyenne de charcuterie correspond à la quantité moyenne en grammes consommée au cours d'une journée par un individu de la population étudiée.");
+			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 	}		
 	
@@ -329,7 +329,7 @@ function updateData(plotName) {
             break;
 		case "patisserie":
 		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true); });
-		    updateTitles("patisserie","Pâtisserie : où sont les gourmands ?", "Consommation journalière de pâtisserie");
+		    updateTitles("patisserie","Pâtisserie : où sont les gourmands ?", "Consommation journalière de pâtisseries");
             $("#map svg").attr("class", "GnYlRd");
             break;
 		case "charcuterie":
