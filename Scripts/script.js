@@ -64,7 +64,7 @@ function updateTitles(mapName, newTitle, newSubtitle) {
 		case "sport":
 			infotooltipIndicator.html("<b>" + newSubtitle + "</b>");
 			infotooltipDesc.html("<b>Définition </b>: La durée hebdomadaire moyenne d'activité physique intense correspond au temps moyen en minutes consacré à une activité sportive intense au cours d'une semaine par un individu de la population étudiée.");
-			infotooltipSource.html("<b>Source </b>: <a href='https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/' target='_blank'> Enquête INCA 2 </a> (ANSES)");
+			infotooltipSource.html("<b>Source </b>: <a href`\"https://www.data.gouv.fr/fr/datasets/donnees-de-consommations-et-habitudes-alimentaires-de-letude-inca-2-3/\" target='_blank'> Enquête INCA 2 </a> (ANSES)");
 			infotooltipYear.html("<b>Année </b>: 2007");
 			break;
 		case "fastfood":
@@ -298,50 +298,127 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
     });
 }
 
+function updatePodium(data, type_podium){
+	
+	var sortedData = data;
+	var bestRegion = "P1";
+	var secRegion = "P2";
+	var worstRegion = "P3";
+	
+	switch (type_podium) {
+        case "descending":
+            $("#Res_Title").text("Champions et Perdant des Bonnes Habitudes");
+			$("#podium_image").attr('src', "Pics/rank.gif").attr('class', "Res_Logo");
+			$("#podium_names").attr('class',"")
+			
+			sortedData = data.sort(function(a, b) { return b.value - a.value; });
+			bestRegion = sortedData[0].reg_name;
+			secRegion = sortedData[1].reg_name;
+			worstRegion = sortedData[20].reg_name;
+			
+			$("#best_region_name").attr('class', "Res_1 greenIndicator").text(bestRegion);
+			$("#sec_region_name").attr('class', "Res_2").text(secRegion);
+			$("#worst_region_name").attr('class', "Res_3 redIndicator").text(worstRegion);
+			
+            break;
+        case "ascending":
+            $("#Res_Title").text("Champions et Perdant des Bonnes Habitudes");
+			$("#podium_image").attr('src', "Pics/rank.gif").attr('class', "Res_Logo");
+			$("#podium_names").attr('class',"")
+			
+			sortedData = data.sort(function(a, b) { return  a.value - b.value; });
+			bestRegion = sortedData[0].reg_name;
+			secRegion = sortedData[1].reg_name;
+			worstRegion = sortedData[20].reg_name;
+
+			$("#best_region_name").attr('class', "Res_1 greenIndicator").text(bestRegion);
+			$("#sec_region_name").attr('class', "Res_2").text(secRegion);
+			$("#worst_region_name").attr('class', "Res_3 redIndicator").text(worstRegion);
+           
+            break;
+        case "butter":
+			//New logo
+            $("#Res_Title").text("Champions respectifs");
+			$("#podium_image").attr('src', "Logos/podium_beurre.svg").attr('class', "Res_Logo_Beurre");
+			$("#podium_names").attr('class', "Podium_Names_Beurre");
+			
+			//Winner names
+			sortedDataBeurre = data.sort(function(a, b) { return b.value_beurre - a.value_beurre; });
+			bestRegion = sortedDataBeurre[0].reg_name;
+			$("#best_region_name").attr('class', "Res_1_Beurre redIndicator").text(bestRegion);
+			
+			sortedDataHuile = data.sort(function(a, b) { return b.value_huile - a.value_huile; });
+			secRegion = sortedDataHuile[0].reg_name;
+			$("#sec_region_name").attr('class', "Res_2_Beurre greenIndicator").text(secRegion);
+			
+			worstRegion = "";
+			$("#worst_region_name").text(worstRegion);
+			
+            break;
+        default:
+			// Podium
+            $("#Res_Title").text("Champions et Perdant des Bonnes Habitudes");
+			$("#podium_image").attr('src', "Pics/rank.gif").attr('class', "Res_Logo");
+			$("#podium_names").attr('class',"")
+			
+			sortedData = data.sort(function(a, b) { return b.value - a.value; });
+			bestRegion = sortedData[0].reg_name;
+			secRegion = sortedData[1].reg_name;
+			worstRegion = sortedData[20].reg_name;
+			
+			$("#best_region_name").attr('class', "Res_1 greenIndicator").text(bestRegion);
+			$("#sec_region_name").attr('class', "Res_2").text(secRegion);
+			$("#worst_region_name").attr('class', "Res_3 redIndicator").text(worstRegion);
+           
+    }
+	
+	
+}
+
 function updateData(plotName) {
     switch (plotName) {
         case "obesity":
-            d3.csv("Data/Obesite.csv", function (error, data) { loadDataset(data, "obesity", false); });
-            updateTitles("obesity","Obesité : où trouve-t-on le plus d'obèses ?", "Prévalence de l'obésité");
+			d3.csv("Data/Obesite.csv", function (error, data) { loadDataset(data, "obesity", false);  updatePodium(data, "ascending"); });
+			updateTitles("obesity","Obesité : où trouve-t-on le plus d'obèses ?", "Prévalence de l'obésité");
             $("#map svg").attr("class", "Purples");
             break;
         case "vegetables":
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "vegetables", false); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "vegetables", false);  updatePodium(data, "descending"); });
             updateTitles("vegetables","Fruits et légumes : qui en mange le moins ?", "Consommation journalière moyenne de fruits et légumes");
             $("#map svg").attr("class", "RdYlGn");
             break;
         case "butter":
-            d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "butter", false); });
+            d3.csv("Data/beurre_vs_huile_resultats.csv", function (error, data) { loadDataset(data, "butter", false);  updatePodium(data, "butter"); });
             updateTitles("butter","Beurre vs Huile", "Comparaison de la consommation journalière moyenne de beurre et d'huile");
             $("#map svg").attr("class", "Butter");
             break;
         case "sport":
-            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport", false); });
+            d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport", false);  updatePodium(data, "descending"); });
             updateTitles("sport","Sports : où en fait-on le plus ?", "Durée hebdomadaire moyenne d'activité physique intense");
             $("#map svg").attr("class", "RdBu");
             break;
         case "fastfood":
-            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood", false); });
+            d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood", false);  updatePodium(data, "ascending"); });
             updateTitles("fastfood","Fastfoods : qui y va régulièrement ?", "Pourcentage de la population allant plus d'1 fois par mois dans un fastfood");
             $("#map svg").attr("class", "YlOrRd");
             break;
 		case "alcohol":
-		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true); });
+		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true);  updatePodium(data, "ascending"); });
 		    updateTitles("alcohol","Alcool : où se prend-on le plus de cuites ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
             $("#map svg").attr("class", "Wine");
             break;
 		case "patisserie":
-		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true); });
+		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true);  updatePodium(data, "ascending"); });
 		    updateTitles("patisserie","Pâtisserie : où sont les plus gourmands ?", "Consommation journalière de pâtisseries");
             $("#map svg").attr("class", "GnYlRd");
             break;
 		case "charcuterie":
-		    d3.csv("Data/Charcuterie.csv", function (error, data) { loadDataset(data, "charcuterie", true); });
+		    d3.csv("Data/Charcuterie.csv", function (error, data) { loadDataset(data, "charcuterie", true);  updatePodium(data, "ascending"); });
 		    updateTitles("charcuterie","Charcuterie : où en mange-t-on le plus ?", "Consommation journalière de charcuterie");
             $("#map svg").attr("class", "GnYlRd");
             break;
         default:
-            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "default", false); });
+            d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "default", false);  updatePodium(data, plotName); });
             updateTitles("vegetables","Default case, not implemented yet...", "Consommation journalière de fruits et légumes");
             $("#map svg").attr("class", "Greys");
     }
@@ -512,6 +589,10 @@ function main() {
         d3.select("#info_tooltip").transition().duration(1).style("opacity", 0);
         d3.select("#info_tooltip").style("left", "0px").style("top", "0px");
     });
+	/*$("#info_logo").on("click", function (d) {
+        d3.select("#info_tooltip_text").transition().duration(200).style("opacity", 1);
+        d3.select("#info_tooltip").style("left", ($("#info_logo").position().left + 40) + "px").style("top", ($("#info_logo").position().top + 100) + "px");
+    });*/
 }
 
 $(window).bind("load", main);

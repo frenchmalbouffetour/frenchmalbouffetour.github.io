@@ -62,11 +62,13 @@ div.infotooltip {
     opacity: 0;
 	margin-top: 10px;
 	margin-left: -170px;
+	z-index:100;
 }
 
 p.infotooltiptext{
 	margin-top: 8px;
 	margin-left: 10px;
+	z-index:100;
 }
 
 .region {
@@ -100,7 +102,7 @@ p.infotooltiptext{
 #info_logo{
 	height: 1.5em;
 	width: 1.5em;
-	margin-left: 20px;
+	margin-left: 10px;
 	display:inline-block;
     z-index: 1000;
 }
@@ -115,7 +117,7 @@ p.infotooltiptext{
 #Res_Title{
 	width:150pt;
 	position: relative;
-	top:90pt;
+	top:100pt;
 	left:30pt;
 	font-family:Arial;
 	font-size:12pt;
@@ -132,11 +134,24 @@ p.infotooltiptext{
 	display:inline-block;
 }
 
+.Podium_Names_Beurre{
+	position: relative;
+	top: -110pt;
+}
+
 .Res_1{
 position : relative;
 font-weight:bold;
 top:8pt;	
 left:2pt;
+}
+
+.Res_1_Beurre{
+position : relative;
+font-weight:bold;
+/*top:8pt;*/
+left:12pt;
+display:inline-block;
 }
 
 .Res_2{
@@ -153,10 +168,27 @@ top:25pt;
 left:110pt;
 }
 
+.Res_2_Beurre{
+position : relative;
+font-weight:bold;
+/*top:0pt;	*/
+left:50pt;
+display:inline-block;
+}
+
+
 .Res_Logo{
 	width: 15em;
 	position:relative;
 	top:120pt;
+	display:inline-block;
+	z-index: 3;
+}
+
+.Res_Logo_Beurre{
+	width: 15em;
+	position:relative;
+	top:70pt;
 	display:inline-block;
 	z-index: 3;
 }

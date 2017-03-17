@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="Stylesheets/menu_css.css" />
     <link href="Stylesheets/style.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body id="body">
     <nav id="main_navigation">
         <button class="cn-button" id="cn-button" onclick="handler();" onfocus="handler();">MENU</button>
         <div class="cn-wrapper" id="cn-wrapper">
@@ -36,21 +36,23 @@
     </nav>
 
     <div id="titles_placeholder">
-        <h1 id="main_title_placeholder">Main title</h1>
+        <h1 id="main_title_placeholder"></h1>
         <div>
-            <h2 id="subtitle_placeholder"> Sub title</h2>
+            <h2 id="subtitle_placeholder"></h2>
             <img src="Logos/logo_information.svg" id="info_logo" />
         </div>
     </div>
 	
-	<!-- PROPOSITION AJOUT ROMANE(à éventuellement supprimer)-->
+
 	<div id="Leader_B">
 		<div id="Result_Logo">
 			<p id="Res_Title"> Champions et Perdant des Bonnes Habitudes</p>
-			<img src="Pics/rank.gif" class = "Res_Logo"/>
+			<img id="podium_image" src="Pics/rank.gif" class = "Res_Logo"/>
+			<div id="podium_names" class = "">
 			<p id="best_region_name" class = "Res_1 greenIndicator"> Bretagne</p>
 			<p id="sec_region_name" class = "Res_2"> A voir</p>
 			<p id="worst_region_name" class = "Res_3 redIndicator"> Nord Pas de Calais</p>
+			</div>
 		</div>
 	</div>
 
