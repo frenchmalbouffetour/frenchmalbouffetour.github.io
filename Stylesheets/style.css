@@ -198,6 +198,7 @@ display:inline-block;
     width: 100%;
 }
 
+
 @font-face{
 	font-family: "RTS"; 
 	src:url("../Fonts/KGSecondChancesSketch.ttf");
@@ -220,17 +221,18 @@ display:inline-block;
 			width:50%;
 			height:300px;
 			margin:auto;
-			border:1.5px solid rgb(48,48,48);
-			box-shadow:20px 20px 10px rgb(240,240,240); 
+			/*border:1.5px solid rgb(48,48,48);*/
+			/*box-shadow:20px 20px 10px rgb(240,240,240); */
 			border-radius:50px;
 			position:relative; 
 			top:100pt; 
-			background-color:rgb(240,230,220);
+			background-color: rgb(236, 236, 236);
+			/*background-color:rgb(240,230,220);*/
 		}
 		#Logo_Pic{border:none;z-index:0;position:absolute;top:0px;left:0px;}
 		#Home_Title{border:none;width:62%;font-family:RTS;
-					color:black;font-size:2em;float:left;
-					background-color:rgba(255,255,255,0.9);z-index:5;
+					color:black;font-size:2em;float:left; 
+					background-color:rgba(255,255, 255,0.95);z-index:5;
 					position:absolute;top:35px;left:150px;border-radius:10px;padding:5px;}
 
 		.animated {
@@ -251,9 +253,9 @@ display:inline-block;
 		#Circle_0{
 			width:80px;
 			height:80px;
-			border:1.5px solid red;
+			border:1.5px solid rgb(199,2,11);
 			border-radius:40px;
-			background-color:white;
+			background-color:rgb(199,2,11);
 			opacity:0.98;
 			position:relative;
 			z-index:3;top:130pt;left:90pt;}				
@@ -267,7 +269,8 @@ display:inline-block;
 			width:60pt;
 			height:50pt;
 			padding-top:10pt;
-			color:black;
+			color:white;
+			font-weight: bold;
 			text-align:center;
 			font-family:RTS;
 			font-size:8pt;
@@ -279,21 +282,21 @@ display:inline-block;
 		
 		#Circles{width:40%;position:relative;right:0px; top:-150pt;left:64%}
 						
-		#Circle_1{width:100px;height:100px;border:1.5px solid rgb(255,0,0);border-radius:50px;
-								background-image:url("../Pics/Dataviz_2.jpg");
+		#Circle_1{width:100px;height:100px;border:1.5px solid rgb(255,255,255);border-radius:50px;
+								background-image:url("../Pics/macarons2.jpg");
 								background-size:100px 100px;opacity:0.95;
 								z-index:3;repeat:no-repeat;top:20px;left:40px}
-		#Circle_2{width:120px;height:120px;border:1.5px solid rgb(48,48,48);border-radius:60px;
-								background-image:url("../Pics/Dataviz_3.jpg");
+		#Circle_2{width:120px;height:120px;border:1.5px solid rgb(255,255,255);border-radius:60px;
+								background-image:url("../Pics/croissant2.jpg");
 								background-size:120px 120px;opacity:0.95;
 								z-index:2;repeat:no-repeat;top:-20px;left:70px}
-		#Circle_3{width:180px;height:180px;border:1.5px solid rgb(255,0,0);border-radius:90px;
+		#Circle_3{width:180px;height:180px;border:1.5px solid rgb(255,255,255);border-radius:90px;
 								background-size:180px 180px;opacity:0.95;
-								background-image:url("../Pics/Dataviz_4.jpg");
+								background-image:url("../Pics/vin.jpg");
 								z-index:1;repeat:no-repeat;top:-80px;left:20px}
-		#Circle_4{width:60px;height:60px;border:1.5px solid rgb(48,48,48);border-radius:30px;
+		#Circle_4{width:60px;height:60px;border:1.5px solid rgb(255,255,255);border-radius:30px;
 								background-size:60px 60px;opacity:0.95;
-								background-image:url("../Pics/Dataviz_5.jpg");
+								background-image:url("../Pics/eiffel.jpg");
 								z-index:4;repeat:no-repeat;top:-120px;left:0px}
 		
 		.row0{height:70%;position:relative;top:0px;left:0px}
@@ -344,7 +347,7 @@ display:inline-block;
 .Purples .q8-9{fill:rgb(63,0,125)}*/
 
 
-.Purples .q0-9{fill:rgb(239,237,245)} 
+.Purples .q0-9{fill:rgb(218,218,235)} 
 .Purples .q1-9{fill:rgb(188,189,220)} 
 .Purples .q2-9{fill:rgb(128,125,186)} 
 .Purples .q3-9{fill:rgb(84,39,143)} 

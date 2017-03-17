@@ -463,12 +463,10 @@ function main() {
 
     // Use a queue to asynchronously load json files
     queue()
-        //.defer(d3.json, "Json/departements.geojson")
         .defer(d3.json, "Json/regions_before_2015.geojson")
-        .defer(d3.csv, "Data/fruits_legumes_resultats.csv")
         .await(ready);
 
-    function ready(error, regions, population) {
+    function ready(error, regions) {
         // Add regions
         deps.selectAll("g")
             .data(regions.features)
