@@ -106,15 +106,27 @@ p.infotooltiptext{
 }
 
 #Leader_B{
+	position: absolute;
+	top:0%;
+	left:70%;
+	margin-right:50pt;
+}
+
+#Res_Title{
+	width:150pt;
 	position: relative;
-	float: right;
-	margin-right: 100px;
+	top:90pt;
+	left:30pt;
+	font-family:Arial;
+	font-size:12pt;
+	text-decoration:uppercase;
+	font-weight:bold;
 }
 
 .Result_Logo{
 	text-align: center;
     color: black;
-    z-index: 1000;
+    z-index: 3;
 	font: Arial sans-serif;
 	font-size: 12pt;
 	display:inline-block;
@@ -122,27 +134,31 @@ p.infotooltiptext{
 
 .Res_1{
 position : relative;
-top:30pt;	
+font-weight:bold;
+top:8pt;	
+left:2pt;
 }
 
 .Res_2{
 position : relative;
-top:30pt;
+font-weight:bold;
+top:0pt;
 left:60pt;	
 }
 
 .Res_3{
 position : relative;
-top:50pt;	
+font-weight:bold;
+top:25pt;	
 left:110pt;
 }
 
 .Res_Logo{
 	width: 15em;
 	position:relative;
-	top:150pt;
+	top:120pt;
 	display:inline-block;
-	z-index: 1000;
+	z-index: 3;
 }
 
 .modal .modal-dialog {
@@ -172,17 +188,17 @@ left:110pt;
 			width:50%;
 			height:300px;
 			margin:auto;
-			border:3px solid rgb(48,48,48);
-			box-shadow:20px 20px 10px rgb(200,200,200); 
+			border:1.5px solid rgb(48,48,48);
+			box-shadow:20px 20px 10px rgb(240,240,240); 
 			border-radius:50px;
 			position:relative; 
 			top:100pt; 
 			background-color:rgb(240,230,220);
 		}
 		#Logo_Pic{border:none;z-index:0;position:absolute;top:0px;left:0px;}
-		#Home_Title{border:none;box-shadow:15px 15px 10px rgb(48,48,48);width:60%;font-family:RTS;
-					color:rgb(48,48,48);font-size:2em;float:left;
-					background-color:rgba(255,255,255,0.8);z-index:5;
+		#Home_Title{border:none;width:62%;font-family:RTS;
+					color:black;font-size:2em;float:left;
+					background-color:rgba(255,255,255,0.9);z-index:5;
 					position:absolute;top:35px;left:150px;border-radius:10px;padding:5px;}
 
 		.animated {
@@ -216,30 +232,34 @@ left:110pt;
 		}
 		
 		#Circle_0_Text{
+			width:60pt;
+			height:50pt;
+			padding-top:10pt;
 			color:black;
+			text-align:center;
 			font-family:RTS;
 			font-size:8pt;
 			position:relative;
-			top:90pt;
-			left:105pt;	
+			top:80pt;
+			left:90pt;	
 			z-index:4;
 		}
 		
-		#Circles{width:40%;position:relative;right:0px; top:-150pt;left:63%}
+		#Circles{width:40%;position:relative;right:0px; top:-150pt;left:64%}
 						
-		#Circle_1{width:100px;height:100px;border:3px solid rgb(255,0,0);border-radius:50px;
+		#Circle_1{width:100px;height:100px;border:1.5px solid rgb(255,0,0);border-radius:50px;
 								background-image:url("../Pics/Dataviz_2.jpg");
 								background-size:100px 100px;opacity:0.95;
 								z-index:3;repeat:no-repeat;top:20px;left:40px}
-		#Circle_2{width:120px;height:120px;border:3px solid rgb(48,48,48);border-radius:60px;
+		#Circle_2{width:120px;height:120px;border:1.5px solid rgb(48,48,48);border-radius:60px;
 								background-image:url("../Pics/Dataviz_3.jpg");
 								background-size:120px 120px;opacity:0.95;
 								z-index:2;repeat:no-repeat;top:-20px;left:70px}
-		#Circle_3{width:180px;height:180px;border:3px solid rgb(255,0,0);border-radius:90px;
+		#Circle_3{width:180px;height:180px;border:1.5px solid rgb(255,0,0);border-radius:90px;
 								background-size:180px 180px;opacity:0.95;
 								background-image:url("../Pics/Dataviz_4.jpg");
 								z-index:1;repeat:no-repeat;top:-80px;left:20px}
-		#Circle_4{width:60px;height:60px;border:3px solid rgb(48,48,48);border-radius:30px;
+		#Circle_4{width:60px;height:60px;border:1.5px solid rgb(48,48,48);border-radius:30px;
 								background-size:60px 60px;opacity:0.95;
 								background-image:url("../Pics/Dataviz_5.jpg");
 								z-index:4;repeat:no-repeat;top:-120px;left:0px}
