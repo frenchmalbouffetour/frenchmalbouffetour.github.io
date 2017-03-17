@@ -10,7 +10,10 @@
   Summary:   This file contains all the javascript code needed for the website to work.
 
 ===================================================================+*/
-
+// Cache du modal par bouton
+function Modal_Cache(){
+	$('#myModal').modal('hide');
+}
 // Menu event handlers
 function handler() {
     var wrapper = document.getElementById('cn-wrapper');
