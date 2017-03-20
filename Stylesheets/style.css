@@ -287,20 +287,20 @@ display:inline-block;
 		#Circles{width:40%;position:relative;right:0px; top:-150pt;left:64%}
 						
 		#Circle_1{width:100px;height:100px;border:1.5px solid rgb(255,255,255);border-radius:50px;
-								background-image:url("../Pics/macarons2.jpg");
+								background-image:url("../Pics/france_map.png");
 								background-size:100px 100px;opacity:0.95;
 								z-index:3;repeat:no-repeat;top:20px;left:40px}
 		#Circle_2{width:120px;height:120px;border:1.5px solid rgb(255,255,255);border-radius:60px;
-								background-image:url("../Pics/croissant2.jpg");
+								background-image:url("../Pics/hamburger_drawing.jpg");
 								background-size:120px 120px;opacity:0.95;
 								z-index:2;repeat:no-repeat;top:-20px;left:70px}
 		#Circle_3{width:180px;height:180px;border:1.5px solid rgb(255,255,255);border-radius:90px;
 								background-size:180px 180px;opacity:0.95;
-								background-image:url("../Pics/vin.jpg");
+								background-image:url("../Pics/circle25.png");
 								z-index:1;repeat:no-repeat;top:-80px;left:20px}
 		#Circle_4{width:60px;height:60px;border:1.5px solid rgb(255,255,255);border-radius:30px;
 								background-size:60px 60px;opacity:0.95;
-								background-image:url("../Pics/eiffel.jpg");
+								background-image:url("../Pics/wine_drawing.jpg");
 								z-index:4;repeat:no-repeat;top:-120px;left:0px}
 		
 		.row0{height:70%;position:relative;top:0px;left:0px}
