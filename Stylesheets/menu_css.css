@@ -19,7 +19,7 @@
 }
 
 #menuTooltip {
-    background: #e7ecf5;
+    /*background: #e7ecf5;*/
     border-radius: 3px;
     font-size: 14pt;
     color: #000000;
@@ -38,8 +38,10 @@
 	border: none;
 	border-radius: 50%;
 	background: none;
-	background-color: #e1e3e4;
-	color: #000000;
+	/*background-color: #e1e3e4;*/
+	background-color: rgb(14,4,100);
+	/*color: #000000;*/
+	color: white;
 	text-align: center;
 	font-weight: 700;
 	font-size: 1.5em;
@@ -132,10 +134,16 @@
 	width: 11em; /* For menu diameter */
 	height: 11em; /* For menu diameter */
 	border-radius: 50%;
-	background: #e1e3e4;
+	
+	/*background: #e1e3e4;
 	background: -webkit-radial-gradient(transparent 35%, #e1e3e4 35%);
 	background: -moz-radial-gradient(transparent 35%, #e1e3e4 35%);
-	background: radial-gradient(transparent 35%, #e1e3e4 35%);
+	background: radial-gradient(transparent 35%, #e1e3e4 35%);*/
+	
+	background: rgb(199,2,11);
+	background: -webkit-radial-gradient(transparent 35%, white 35%);
+	background: -moz-radial-gradient(transparent 35%, white 35%);
+	background: radial-gradient(transparent 35%, white 35%);
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
@@ -155,15 +163,21 @@
 }
 
 .cn-button:hover {
-    background: #aaafb0;
+    /*background: #aaafb0;*/
+	background: rgb(14,4,100);
+	opacity: 0.8;
 }
+
 
 .cn-wrapper li a:hover,
 .cn-wrapper li a:active,
 .cn-wrapper li a:focus {
-	background: -webkit-radial-gradient(transparent 35%, #aaafb0 35%);
+	/*background: -webkit-radial-gradient(transparent 35%, #aaafb0 35%);
 	background: -moz-radial-gradient(transparent 35%, #aaafb0 35%);
-	background: radial-gradient(transparent 35%, #aaafb0 35%);
+	background: radial-gradient(transparent 35%, #aaafb0 35%);*/
+	background: -webkit-radial-gradient(transparent 35%, rgb(199,2,11) 35%);
+	background: -moz-radial-gradient(transparent 35%, rgb(199,2,11) 35%);
+	background: radial-gradient(transparent 35%, rgb(199,2,11) 35%);
 }
 
 .cn-wrapper li a:focus {
@@ -231,3 +245,4 @@
 	-ms-transform: rotate(315deg) skew(47deg);
 	transform: rotate(315deg) skew(47deg);
 }
+

@@ -21,12 +21,14 @@ function handler() {
     if (!open) {
         this.innerHTML = "Close";
         classie.add(wrapper, 'opened-nav');
-        $(".cn-button:hover").css("background", "#aaafb0")
+        /*$(".cn-button:hover").css("background", "#aaafb0")*/
+		$(".cn-button:hover").css("background", 'rgb(14,4,100)')
     }
     else {
         this.innerHTML = "Menu";
         classie.remove(wrapper, 'opened-nav');
-        $(".cn-button:hover").css("background", "#e1e3e4")
+        /*$(".cn-button:hover").css("background", "#e1e3e4")*/
+		$(".cn-button:hover").css("background", "rgb(14,4,100)")
     }
     open = !open;
 }
@@ -263,7 +265,20 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
                     case "butter":
                         tooltipIndicator.html("<b><u>" + e.battle_result + " </u></b><br>" + Math.round(e.value_beurre) + " g/jour de beurre <br>" + Math.round(e.value_huile) + " g/jour d'huile <br>");
                         tooltipRanking.html("");
-                        tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + (Math.round(e.delta_beurre) < 0 ? '' : '+') + Math.round(e.delta_beurre) + " % de beurre <br>" + (Math.round(e.delta_huile) < 0 ? '' : '+') + Math.round(e.delta_huile) + " % d'huile <br>");
+						if (Math.round(e.delta_beurre) >= 0){
+							if (Math.round(e.delta_huile) >= 0){
+								tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + "<span class='boldText redIndicator'>+"  + Math.round(e.delta_beurre) + " % </span> de beurre <br>" + "<span class='boldText redIndicator'>+" + Math.round(e.delta_huile) + " % </span> d'huile <br>");							
+							} else {
+								tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + "<span class='boldText redIndicator'>+"  + Math.round(e.delta_beurre) + " % </span> de beurre <br>" + "<span class='boldText greenIndicator'>" + Math.round(e.delta_huile) + " % </span> d'huile <br>");								
+							}
+						}
+						else {
+							if (Math.round(e.delta_huile) >= 0){
+								tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + "<span class='boldText greenIndicator'>"  + Math.round(e.delta_beurre) + " % </span> de beurre <br>" + "<span class='boldText redIndicator'>+" + Math.round(e.delta_huile) + " % </span> d'huile <br>");							
+							} else {
+								tooltipMeanIndicator.html("<b> Par rapport à la moyenne française : </b><br>" + "<span class='boldText greenIndicator'>"  + Math.round(e.delta_beurre) + " % </span> de beurre <br>" + "<span class='boldText greenIndicator'>" + Math.round(e.delta_huile) + " % </span> d'huile <br>");								
+							}							
+						}
                         break;
 					case "alcohol":
                         tooltipIndicator.html(Math.round(e.value) + " % ont une ivresse répétée");
@@ -516,7 +531,7 @@ function main() {
         .style("opacity", 0);
 
     $("#menu_item_1").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les obèses").style("left", $("#menu_item_1 a img").position().left + "px").style("top", $("#menu_item_1 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -524,7 +539,7 @@ function main() {
     });
 
     $("#menu_item_2").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les veggies").style("left", $("#menu_item_2 a img").position().left + "px").style("top", $("#menu_item_2 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -532,7 +547,7 @@ function main() {
     });
 
     $("#menu_item_3").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les plutôt-beurre et les plutôt-huile").style("left", $("#menu_item_3 a img").position().left + "px").style("top", $("#menu_item_3 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -540,7 +555,7 @@ function main() {
     });
 
     $("#menu_item_4").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les sportifs").style("left", $("#menu_item_4 a img").position().left + "px").style("top", $("#menu_item_4 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -548,7 +563,7 @@ function main() {
     });
 
     $("#menu_item_5").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les adeptes du fastfood").style("left", $("#menu_item_5 a img").position().left + "px").style("top", $("#menu_item_5 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -556,7 +571,7 @@ function main() {
     });
 
     $("#menu_item_6").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les alcolos").style("left", $("#menu_item_6 a img").position().left + "px").style("top", $("#menu_item_6 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -564,7 +579,7 @@ function main() {
     });
 
     $("#menu_item_7").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les gourmands").style("left", $("#menu_item_7 a img").position().left + "px").style("top", $("#menu_item_7 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
@@ -572,7 +587,7 @@ function main() {
     });
 
     $("#menu_item_8").on("mouseover", function (d) {
-        menuDiv.transition().duration(200).style("opacity", .9);
+        menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
         menuDiv.html("Les amateurs de charcuterie").style("left", $("#menu_item_8 a img").position().left + "px").style("top", $("#menu_item_8 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
