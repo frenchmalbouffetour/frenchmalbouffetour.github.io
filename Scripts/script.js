@@ -410,7 +410,7 @@ function updateData(plotName) {
         case "sport":
             d3.csv("Data/act_physique_resultats.csv", function (error, data) { loadDataset(data, "sport", false);  updatePodium(data, "descending"); });
             updateTitles("sport","Sports : où en fait-on le plus ?", "Durée hebdomadaire moyenne d'activité physique intense");
-            $("#map svg").attr("class", "RdBu");
+            $("#map svg").attr("class", "Blues");
             break;
         case "fastfood":
             d3.csv("Data/fastfood_resultats.csv", function (error, data) { loadDataset(data, "fastfood", false);  updatePodium(data, "ascending"); });
@@ -420,17 +420,17 @@ function updateData(plotName) {
 		case "alcohol":
 		    d3.csv("Data/Alcool.csv", function (error, data) { loadDataset(data, "alcohol", true);  updatePodium(data, "ascending"); });
 		    updateTitles("alcohol","Alcool : où se prend-on le plus de cuites ?", "Ivresses répétées (au moins trois ivresses dans l’année)");
-            $("#map svg").attr("class", "Wine");
+            $("#map svg").attr("class", "Whisky");
             break;
 		case "patisserie":
 		    d3.csv("Data/patisserie_resultats.csv", function (error, data) { loadDataset(data, "patisserie", true);  updatePodium(data, "ascending"); });
 		    updateTitles("patisserie","Pâtisserie : où sont les plus gourmands ?", "Consommation journalière de pâtisseries");
-            $("#map svg").attr("class", "GnYlRd");
+            $("#map svg").attr("class", "Pink");
             break;
 		case "charcuterie":
 		    d3.csv("Data/Charcuterie.csv", function (error, data) { loadDataset(data, "charcuterie", true);  updatePodium(data, "ascending"); });
 		    updateTitles("charcuterie","Charcuterie : où en mange-t-on le plus ?", "Consommation journalière de charcuterie");
-            $("#map svg").attr("class", "GnYlRd");
+            $("#map svg").attr("class", "Charc");
             break;
         default:
             d3.csv("Data/fruits_legumes_resultats.csv", function (error, data) { loadDataset(data, "default", false);  updatePodium(data, plotName); });

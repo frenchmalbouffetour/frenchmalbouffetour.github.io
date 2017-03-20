@@ -310,7 +310,7 @@ display:inline-block;
 		.row4{height:60%;position:relative;top:0px;left:0px}
 		.row5{height:80%;position:relative;top:0px;left:0px}
 
-.Blues .q0-9 { fill:rgb(247,251,255) } 
+/*.Blues .q0-9 { fill:rgb(247,251,255) } 
 .Blues .q1-9 { fill:rgb(222,235,247) } 
 .Blues .q2-9 { fill:rgb(198,219,239) } 
 .Blues .q3-9 { fill:rgb(158,202,225) } 
@@ -318,7 +318,13 @@ display:inline-block;
 .Blues .q5-9 { fill:rgb(66,146,198) } 
 .Blues .q6-9 { fill:rgb(33,113,181) } 
 .Blues .q7-9 { fill:rgb(8,81,156) } 
-.Blues .q8-9 { fill:rgb(8,48,107) }
+.Blues .q8-9 { fill:rgb(8,48,107) }*/
+
+
+.Blues .q0-9 { fill:rgb(198,219,239) } 
+.Blues .q1-9 { fill:rgb(158,202,225)} 
+.Blues .q2-9 { fill:rgb(8,81,156) } 
+.Blues .q3-9 { fill:#2C2282 }
 
 .Greens .q0-9{ fill:rgb(247,252,245) } 
 .Greens .q1-9{ fill:rgb(229,245,224) } 
@@ -465,7 +471,37 @@ display:inline-block;
 .Wine .q2-9{fill:#990012} 
 .Wine .q3-9{fill:#670000} 
 
-.Butter .q0-9{fill:rgb(255,219,76)}
-.Butter .q1-9{fill:rgb(120,198,121)} 
+.Butter .q0-9{fill:#F5E562}
+.Butter .q1-9{fill:#77B541} 
+
+.Pink .q0-9{fill : #FFC8F1}
+.Pink .q1-9{fill : rgb(255, 170, 211)}
+.Pink .q2-9{fill : #FF82AB}
+.Pink .q3-9{fill : #BB3C65}
+
+/*.Charc .q0-9{fill: #FF5050}
+.Charc .q1-9{fill: #ee0000}
+.Charc .q2-9{fill: #a60000}
+.Charc .q3-9{fill: #450102}*/
+
+/*.Charc .q0-9{fill: #DB9798}
+.Charc .q1-9{fill: #955152}
+.Charc .q2-9{fill: #6D292A}
+.Charc .q3-9{fill: #450102}*/
+
+.Charc .q0-9{fill:#FFAABC} 
+.Charc .q1-9{fill:#FF6E80} 
+.Charc .q2-9{fill:#DF4658} 
+.Charc .q3-9{fill:#670000} 
+
+.Sport .q0-9{fill: #DB9798}
+.Sport .q1-9{fill: #955152}
+.Sport .q2-9{fill: #6D292A}
+.Sport .q3-9{fill: #0E0464}
+
+.Whisky .q0-9{fill : #FFEC8B}
+.Whisky .q1-9{fill : #F7CE6D}
+.Whisky .q2-9{fill : #DE952F}
+.Whisky .q3-9{fill : #A35905}
 
 
