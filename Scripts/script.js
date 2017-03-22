@@ -116,6 +116,8 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
 	
 	// Legend
 	d3.select('#legend').remove();
+	if (width > 768) {
+	
 	var legend = d3.select('#svg').append("g")
             .attr("transform", "translate(" + Math.round((width / 2) + width * 0.2) + ", " + Math.round(height / 2) + ")")
             .attr("id", "legend");
@@ -210,6 +212,7 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
             .attr("x", "0px")
             .attr("y", "-15px")
             .text(function(d) { return legend_title; });
+	}
 			
 		
 		
@@ -442,9 +445,10 @@ function updateData(plotName) {
 function main() {
     var width = $(window).width();
     var height = $(window).height();
-
+	
+	if (width > 768) {
     // Open the modal window
-    $("#myModal").modal("show");
+    $("#myModal").modal("show");}
     
     // Create a path object to manipulate geoJSON data
     var path = d3.geoPath();
@@ -496,7 +500,7 @@ function main() {
 
 
         // Load some data
-        updateData("unknown");
+        updateData("obesity");
  
 
     };

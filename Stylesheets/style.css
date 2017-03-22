@@ -15,8 +15,10 @@ body{
 } 
 
 #map {
-    padding: 0;
-	margin-top:10vh;
+    padding: 15px;
+	/*margin-top:10vh;*/
+	margin-left: -28vw;
+
 }
 
 .greenIndicator {
@@ -95,7 +97,7 @@ p.infotooltiptext{
 	display:inline-block;
 }
 
-#titles_placeholder{
+.titles_placeholder{
 	text-align: center;
 
 }
@@ -109,10 +111,12 @@ p.infotooltiptext{
 }
 
 #Leader_B{
-	position: absolute;
+	/*position: absolute;
 	top:0%;
 	left:70%;
-	margin-right:50pt;
+	margin-right:50pt;*/
+	position: relative;
+	top: -16vh;
 }
 
 #Res_Title{

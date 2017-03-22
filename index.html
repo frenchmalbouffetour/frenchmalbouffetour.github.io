@@ -25,9 +25,39 @@
   ga('create', 'UA-94036781-1', 'auto');
   ga('send', 'pageview');
 	</script>
+	<style type="text/css">
+    /* Some custom styles to beautify this example */
+    .demo-content{
+        padding: 15px;
+        font-size: 18px;
+        min-height: 300px;
+        background: #dbdfe5;
+        margin-bottom: 10px;
+    }
+    .demo-content.bg-alt{
+        background: #abb1b8;
+    }
+</style>
 </head>
 <body id="body">
-    <nav id="main_navigation">
+
+	<div class="container" >
+		
+
+		<div class= "titles_placeholder">
+			<h1 id="main_title_placeholder"> </h1>
+			<div>
+				<h2 id="subtitle_placeholder"></h2>
+				<img src="Logos/logo_information.svg" id="info_logo" />
+			</div>
+		</div>
+
+		
+
+        <!--Row with three columns divided in 1:4:1 ratio-->
+        <div class = 'row'>
+            <div class="col-md-3">
+	<nav id="main_navigation">
         <button class="cn-button" id="cn-button" onclick="handler();" onfocus="handler();">MENU</button>
         <div class="cn-wrapper" id="cn-wrapper">
             <ul id="cn-ul">
@@ -43,14 +73,47 @@
         </div>
         <div id="cn-overlay" class="cn-overlay"></div>
     </nav>
-
-    <div id="titles_placeholder">
-        <h1 id="main_title_placeholder"></h1>
-        <div>
-            <h2 id="subtitle_placeholder"></h2>
-            <img src="Logos/logo_information.svg" id="info_logo" />
+            </div>
+			
+            <div class="col-md-6">
+            	<div id='map'></div>
+            </div>
+			
+            <div class="col-md-3">
+				<div id="Leader_B">
+					<div id="Result_Logo">
+						<p id="Res_Title"> Champions et Perdant des Bonnes Habitudes</p>
+						<img id="podium_image" src="Pics/rank.gif" class = "Res_Logo"/>
+							<div id="podium_names" class = "">
+								<p id="best_region_name" class = "Res_1 greenIndicator"> Bretagne</p>
+								<p id="sec_region_name" class = "Res_2"> A voir</p>
+								<p id="worst_region_name" class = "Res_3 redIndicator"> Nord Pas de Calais</p>
+							</div>
+					</div>
+				</div>
+            </div>
         </div>
-    </div>
+        
+		</div>
+	
+	
+
+    <!--<nav id="main_navigation">
+        <button class="cn-button" id="cn-button" onclick="handler();" onfocus="handler();">MENU</button>
+        <div class="cn-wrapper" id="cn-wrapper">
+            <ul id="cn-ul">
+                <li id="menu_item_1"><a href="#" onclick="updateData('obesity');"><img src="Logos/logo_obesity.svg" alt="obesity" height="40px" width="40px" /></a></li>
+                <li id="menu_item_2"><a href="#" onclick="updateData('vegetables');"><img src="Logos/logo_veggie_1.svg" alt="vegetables" height="40px" width="40px" /></a></li>
+                <li id="menu_item_3"><a href="#" onclick="updateData('butter');"><img src="Logos/logo_olive.svg" alt="butter" height="40px" width="40px" /></a></li>
+                <li id="menu_item_4"><a href="#" onclick="updateData('sport');"><img src="Logos/logo_sport.svg" alt="sport" height="40px" width="40px" /></a></li>
+                <li id="menu_item_5"><a href="#" onclick="updateData('fastfood');"><img src="Logos/logo_fastfood.svg" alt="fastfood" height="40px" width="40px" /></a></li>
+                <li id="menu_item_6"><a href="#" onclick="updateData('alcohol');"><img src="Logos/logo_alcool.svg" alt="alcool" height="40px" width="40px" /></a></li>
+                <li id="menu_item_7"><a href="#" onclick="updateData('patisserie');"><img src="Logos/logo_patisserie.svg" alt="coffee" height="40px" width="40px" /></a></li>
+                <li id="menu_item_8"><a href="#" onclick="updateData('charcuterie');"><img src="Logos/logo_charc2.svg" alt="charcuterie" height="40px" width="40px" /></a></li>
+            </ul>
+        </div>
+        <div id="cn-overlay" class="cn-overlay"></div>
+    </nav>
 	
 
 	<div id="Leader_B">
@@ -65,7 +128,7 @@
 		</div>
 	</div>
 
-    <div id="map" class="container-fluid"></div>
+    <div id="map" class="container-fluid"></div>-->
 
     <div id="map_tooltip" class="tooltip">
         <p id="tooltip_region_name" class="boldText"></p>
