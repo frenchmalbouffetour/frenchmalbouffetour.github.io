@@ -296,7 +296,11 @@ function loadDataset(data, mapName, invertedIndicatorColor) {
                 }
 
                 // Ajust tooltip's position
-                div.style("left", (d3.event.pageX + 30) + "px").style("top", (d3.event.pageY - 30) + "px");
+				if (width > 768) {
+					div.style("left", (d3.event.pageX + 30) + "px").style("top", (d3.event.pageY - 30) + "px");
+				} else {
+					div.style("left", (d3.event.pageX - 90) + "px").style("top", (d3.event.pageY + 30) + "px");
+				}
             })
             .on("mouseout", function (d) {
                 tooltipRegionName.html("");
@@ -327,7 +331,7 @@ function updatePodium(data, type_podium){
         case "descending":
             $("#Res_Title").text("Champions et Perdant des Bonnes Habitudes");
 			$("#podium_image").attr('src', "Pics/rank.gif").attr('class', "Res_Logo");
-			$("#podium_names").attr('class',"")
+			$("#podium_names").attr('class',"");
 			
 			sortedData = data.sort(function(a, b) { return b.value - a.value; });
 			bestRegion = sortedData[0].reg_name;
@@ -446,9 +450,12 @@ function main() {
     var width = $(window).width();
     var height = $(window).height();
 	
+	//Solve responsive issues (in a manual way...)
 	if (width > 768) {
     // Open the modal window
-    $("#myModal").modal("show");}
+    $("#myModal").modal("show");
+	$("#map").attr('style',"margin-left: -28vw;");
+	$("#Leader_B").attr('style',"top: -16vh");}
     
     // Create a path object to manipulate geoJSON data
     var path = d3.geoPath();

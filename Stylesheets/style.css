@@ -17,8 +17,7 @@ body{
 #map {
     padding: 15px;
 	/*margin-top:10vh;*/
-	margin-left: -28vw;
-
+	margin-left: auto;
 }
 
 .greenIndicator {
@@ -76,6 +75,7 @@ p.infotooltiptext{
 .region {
     stroke: #fff;
     stroke-width: 2.0px;
+	/*cursor: pointer;*/
 }
 
 #main_title_placeholder, #subtitle_placeholder {
@@ -116,7 +116,7 @@ p.infotooltiptext{
 	left:70%;
 	margin-right:50pt;*/
 	position: relative;
-	top: -16vh;
+	top:-40vh;
 }
 
 #Res_Title{
