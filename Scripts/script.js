@@ -543,7 +543,7 @@ function main() {
 
     $("#menu_item_1").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
-        menuDiv.html("Les obèses").style("left", $("#menu_item_1 a img").position().left + "px").style("top", $("#menu_item_1 a img").position().top + "px");
+        menuDiv.html("L'obésité").style("left", $("#menu_item_1 a img").position().left + "px").style("top", $("#menu_item_1 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
@@ -583,7 +583,7 @@ function main() {
 
     $("#menu_item_6").on("mouseover", function (d) {
         menuDiv.transition().duration(200).style("opacity", .9).style("background", 'white');
-        menuDiv.html("Les alcolos").style("left", $("#menu_item_6 a img").position().left + "px").style("top", $("#menu_item_6 a img").position().top + "px");
+        menuDiv.html("Les buveurs").style("left", $("#menu_item_6 a img").position().left + "px").style("top", $("#menu_item_6 a img").position().top + "px");
     }).on("mouseout", function (d) {
         menuDiv.transition().duration(500).style("opacity", 0);
         menuDiv.html("").style("left", "0px").style("top", "0px");
